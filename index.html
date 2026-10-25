@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,8 +45,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- Google Calendar Appointment Script Stylesheet -->
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+
   <style>
-    /* Smooth custom transitions */
+    /* Custom tab display rules */
     .tab-content { display: none; }
     .tab-content.active { display: block; }
     
@@ -65,6 +68,14 @@
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(100, 116, 139, 0.6);
     }
+
+    /* Fix para transparência do Modal de Agendamento do Google Calendar */
+    div[role="dialog"] iframe,
+    iframe[src*="calendar.google.com"] {
+      background-color: #ffffff !important;
+      border-radius: 12px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 
@@ -80,43 +91,37 @@
           <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
             <i class="fa-solid fa-bars text-xl"></i>
           </button>
+          <!---
           <span class="font-serif font-bold text-lg text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-            <i class="fa-solid fa-graduation-cap text-brand-600 dark:text-brand-500"></i>
-            <span id="nav-brand-name">Dr. Alex Mercer</span>
+            <i class="fa-solid fa-graduation-cap text-brand-600 dark:text-brand-500"></i> --->
+            <span><!--- Dr. Leonardo ---> </span>
           </span>
         </div>
 
         <!-- Desktop Navigation Tabs -->
         <nav class="hidden md:flex space-x-1 lg:space-x-2 text-sm font-medium">
           <button onclick="switchTab('about')" class="nav-tab active px-3 py-2 rounded-md text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 transition" data-tab="about">
-            <i class="fa-regular fa-user mr-1.5"></i>About
+            <i class="fa-regular fa-user mr-1.5"></i>Sobre
           </button>
           <button onclick="switchTab('publications')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="publications">
-            <i class="fa-solid fa-book mr-1.5"></i>Publications
+            <i class="fa-solid fa-book mr-1.5"></i>Publicações
           </button>
           <button onclick="switchTab('projects')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="projects">
-            <i class="fa-solid fa-flask mr-1.5"></i>Research & Projects
+            <i class="fa-solid fa-flask mr-1.5"></i>Pesquisa e Projetos
           </button>
           <button onclick="switchTab('teaching')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="teaching">
-            <i class="fa-solid fa-chalkboard-user mr-1.5"></i>Teaching
+            <i class="fa-solid fa-chalkboard-user mr-1.5"></i>Ensino
           </button>
           <button onclick="switchTab('news')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="news">
-            <i class="fa-regular fa-newspaper mr-1.5"></i>News
+            <i class="fa-regular fa-newspaper mr-1.5"></i>Carreira
           </button>
           <button onclick="switchTab('contact')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="contact">
-            <i class="fa-regular fa-envelope mr-1.5"></i>Contact
+            <i class="fa-regular fa-envelope mr-1.5"></i>Contatos
           </button>
         </nav>
 
-        <!-- Right Utilities: Theme Toggle & Builder Mode Drawer Button -->
+        <!-- Right Utilities: Theme Toggle -->
         <div class="flex items-center space-x-2 sm:space-x-3">
-          <!-- Live Editor Drawer Toggle -->
-          <button id="editor-toggle-btn" class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-amber-500 hover:bg-amber-600 text-white shadow-sm transition">
-            <i class="fa-solid fa-pen-to-square"></i>
-            <span class="hidden sm:inline">Builder / Edit Mode</span>
-          </button>
-
-          <!-- Theme Toggle Button -->
           <button id="theme-toggle" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none" title="Toggle Light/Dark Theme">
             <i class="fa-solid fa-moon text-lg dark:hidden"></i>
             <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
@@ -128,12 +133,12 @@
 
     <!-- Mobile Dropdown Navigation -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-1">
-      <button onclick="switchTab('about')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="about"><i class="fa-regular fa-user mr-2"></i>About</button>
-      <button onclick="switchTab('publications')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="publications"><i class="fa-solid fa-book mr-2"></i>Publications</button>
-      <button onclick="switchTab('projects')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="projects"><i class="fa-solid fa-flask mr-2"></i>Research & Projects</button>
-      <button onclick="switchTab('teaching')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="teaching"><i class="fa-solid fa-chalkboard-user mr-2"></i>Teaching</button>
-      <button onclick="switchTab('news')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="news"><i class="fa-regular fa-newspaper mr-2"></i>News</button>
-      <button onclick="switchTab('contact')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="contact"><i class="fa-regular fa-envelope mr-2"></i>Contact</button>
+      <button onclick="switchTab('about')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="about"><i class="fa-regular fa-user mr-2"></i>Sobre</button>
+      <button onclick="switchTab('publications')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="publications"><i class="fa-solid fa-book mr-2"></i>Publicações</button>
+      <button onclick="switchTab('projects')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="projects"><i class="fa-solid fa-flask mr-2"></i>Pesquisa e Projetos</button>
+      <button onclick="switchTab('teaching')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="teaching"><i class="fa-solid fa-chalkboard-user mr-2"></i>Ensino</button>
+      <button onclick="switchTab('news')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="news"><i class="fa-regular fa-newspaper mr-2"></i>Carreira</button>
+      <button onclick="switchTab('contact')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="contact"><i class="fa-regular fa-envelope mr-2"></i>Contatos</button>
     </div>
   </header>
 
@@ -148,65 +153,74 @@
           <!-- Profile Avatar & Badges -->
           <div class="text-center">
             <div class="relative inline-block mb-4">
-              <img id="display-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" 
-                   alt="Dr. Alex Mercer Profile Picture" 
+              <img src="https://lh3.googleusercontent.com/a/ACg8ocJRexBJX5I0gfCIaslctHx05RGyVGQvTfNWiFFgvmtAZMaNHhlW=s288-c-no" 
+                   alt="Leonardo Profile Picture" 
                    class="w-36 h-36 sm:w-44 sm:h-44 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-md mx-auto"
-                   onerror="this.src='https://placehold.co/400x400/0284c7/white?text=Dr.+Mercer'">
+                   onerror="this.src='https://placehold.co/400x400/0284c7/white?text=Dr.+Leonardo'">
               <span class="absolute bottom-2 right-2 bg-emerald-500 text-white p-1.5 rounded-full ring-4 ring-white dark:ring-slate-900" title="Available for Collaboration">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
               </span>
             </div>
 
-            <h1 id="display-name" class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Dr. Alex Mercer, Ph.D.</h1>
-            <p id="display-title" class="text-brand-600 dark:text-brand-400 font-medium text-sm mt-1">Assistant Professor / Postdoctoral Lead</p>
-            <p id="display-dept" class="text-slate-500 dark:text-slate-400 text-xs mt-1">Dept. of Computer Science & AI Lab</p>
-            <p id="display-univ" class="text-slate-600 dark:text-slate-300 text-sm font-semibold mt-0.5">University of Faculty Demo</p>
+            <h1 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Leonardo A. Coelho Ribeiro</h1>
+            <p class="text-brand-600 dark:text-brand-400 font-medium text-sm mt-1">Chefe Controladoria -  Grupo Umuarama</p>
+            <br>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">MSc. Animal Science | University of Wisconsin- Madison, USA</p>
+            <br>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Mestre em Produção e Nutrição de Ruminantes - Zootecnia | Universidade Federal de Lavras - UFLA</p>
+            <br>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Médico Veterinário - CRMV/MG 18618 | Universidade Federal de Lavras - UFLA</p>
+            <br>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Cientista de Dados <i>graduação em andamento</i> | Instituto Federal de Mato Grosso - IFMT</p> 
+            <br>
 
             <div class="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mt-2">
               <i class="fa-solid fa-location-dot text-rose-500"></i>
-              <span id="display-location">Vancouver, BC, Canada</span>
+              <span>Cuiabá, Mato Grosso, Brasil</span>
             </div>
           </div>
 
           <!-- Academic Links / Badges -->
           <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-2 justify-center">
-            <a id="link-scholar" href="https://scholar.google.com" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+            <a href="https://scholar.google.com/citations?user=MyKSsPQAAAAJ&hl=en" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
               <i class="fa-solid fa-graduation-cap text-sky-600"></i> Scholar
             </a>
-            <a id="link-orcid" href="https://orcid.org" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+            <a href="https://orcid.org/0000-0002-2804-8052" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
               <i class="fa-brands fa-orcid text-emerald-600"></i> ORCID
             </a>
-            <a id="link-github" href="https://github.com" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+            <a href="https://github.com/le0ribeir0" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
               <i class="fa-brands fa-github"></i> GitHub
             </a>
-            <a id="link-linkedin" href="https://linkedin.com" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+            <a href="https://www.linkedin.com/in/leonardo-ribeiro0/" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
               <i class="fa-brands fa-linkedin text-blue-600"></i> LinkedIn
             </a>
           </div>
 
           <!-- Action Buttons -->
           <div class="mt-6 space-y-2">
-            <a id="btn-cv" href="#" download class="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm rounded-xl shadow-sm transition">
+            <!---
+            <a href="#" download class="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm rounded-xl shadow-sm transition">
               <i class="fa-solid fa-file-arrow-down"></i> Download Curriculum Vitae
             </a>
+            --->
             <button onclick="switchTab('contact')" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium text-sm rounded-xl transition">
-              <i class="fa-regular fa-paper-plane"></i> Get in Touch
+              <i class="fa-regular fa-paper-plane"></i> Entre em Contato
             </button>
           </div>
 
           <!-- Quick Metrics / Citation Summary Card -->
           <div class="mt-6 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 grid grid-cols-3 text-center">
             <div>
-              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400">1,420+</span>
-              <span class="text-[10px] uppercase font-semibold text-slate-400">Citations</span>
+              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400"> <!---1,420+ --></span>
+              <span class="text-[10px] uppercase font-semibold text-slate-400">Citações</span>
             </div>
             <div>
-              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400">18</span>
+              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400"> <!1--- 18> </span>
               <span class="text-[10px] uppercase font-semibold text-slate-400">h-index</span>
             </div>
             <div>
-              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400">24</span>
-              <span class="text-[10px] uppercase font-semibold text-slate-400">Papers</span>
+              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400"> <!--- 24 ---> </span>
+              <span class="text-[10px] uppercase font-semibold text-slate-400">Artigos</span>
             </div>
           </div>
 
@@ -222,61 +236,35 @@
           <!-- Bio Header -->
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
             <h2 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <i class="fa-solid fa-user-gear text-brand-600 text-xl"></i> About & Research Focus
+              <i class="fa-solid fa-chevron-right text-brand-600 text-xl"></i> Sobre mim
             </h2>
-            <div id="display-bio-text" class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed">
+            <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed">
               <p>
-                Welcome! I am an Assistant Professor at the Department of Computer Science. My primary research revolves around <strong>Trustworthy Artificial Intelligence</strong>, <strong>Machine Learning Systems</strong>, and <strong>Large Language Model Alignment</strong>.
+               👋 Olá! Sou um pesquisador, sou brasileiro, e médico veterinário.                                                                                    Com mestrado em zootecnia, minha vida de resumo em desenvolvimento e inovações para a agropecuária.
               </p>
-              <p>
-                I completed my Ph.D. in Computer Science at Stanford University under the supervision of Dr. Jane Doe. Previously, I worked as a research visitor at DeepMind and Microsoft Research. My goal is to build safe, interpretable, and computationally efficient AI agents capable of reasoning in complex multi-agent environments.
+                <p>
+                🌱 Minhas pesquisas, concentram-se aplicação de modelos preditivos.
+                Cheguei a publicar alguns artigos nessa área.
+                </p>
+                <p>
+                🌟 Valorizo o ensino, tanto em sala de aula quanto na mentoria de estudantes. Lecionei algumas disciplinas de biologia, geográfia & história e estatística em diversos níveis, abrangendo o ensino técnico, médio e a graduação.
+                </p>
+                <p>Atualmente sou chefe da controladoria do Grupo Umuarama - Cuiabá/MT. Em 2026 tomei a iniciativa de cursar um segundo curso de graduação em Ciência de dados e Inteligência Artificial no Instituto Federal de Mato Grosso - IFMT. Tranformando ideias em realidade com organização e planejamento especializado venho conciliando a <i>dual</i> rotina.
+                </p>
+                <p>🎣 No meu tempo livre adoro pescar! Sim! A calma, a paciência e relaxamento de uma pescaria me faz pensar em soluções aos desafios das análises aos dados.
+                </p>
+                <p>☕️ Já nas pequenas pausas diárias da rotina adoro saborear minhas bebidas favoritas, um café e/ou um cappuccino!
+                </p>
               </p>
             </div>
 
             <!-- Research Interests Tags -->
             <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
-              <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Primary Research Interests</h3>
-              <div id="display-tags-container" class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-brand-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Deep Learning</span>
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-brand-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">LLM Fine-tuning</span>
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-brand-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">AI Safety & Ethics</span>
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-brand-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Computer Vision</span>
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-brand-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Reinforcement Learning</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Education & Experience Timeline -->
-          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-6 flex items-center gap-2">
-              <i class="fa-solid fa-briefcase text-brand-600"></i> Education & Academic Career
-            </h2>
-
-            <div class="relative pl-6 border-l-2 border-slate-200 dark:border-slate-800 space-y-8">
-              <!-- Item 1 -->
-              <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-white dark:ring-slate-900"></div>
-                <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-wider">2023 - Present</span>
-                <h3 class="text-base font-bold text-slate-900 dark:text-white">Assistant Professor</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-400">Department of Computer Science, University of Faculty Demo</p>
-                <p class="text-xs text-slate-500 mt-1">Leading the Trustworthy AI & Systems Lab (TAIS Lab).</p>
-              </div>
-
-              <!-- Item 2 -->
-              <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></div>
-                <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">2021 - 2023</span>
-                <h3 class="text-base font-bold text-slate-900 dark:text-white">Postdoctoral Research Fellow</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-400">AI Research Institute & MIT CSAIL</p>
-              </div>
-
-              <!-- Item 3 -->
-              <div class="relative">
-                <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 ring-4 ring-white dark:ring-slate-900"></div>
-                <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">2016 - 2021</span>
-                <h3 class="text-base font-bold text-slate-900 dark:text-white">Ph.D. in Computer Science</h3>
-                <p class="text-sm text-slate-600 dark:text-slate-400">Stanford University</p>
-                <p class="text-xs text-slate-500 mt-1">Dissertation: <em>Scalable Alignment & Interpretability for Deep Neural Networks</em></p>
+              <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Principais Interesses</h3>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Deep Learning</span>
+                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Machine Learning</span>
+                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Data Science</span>
               </div>
             </div>
           </div>
@@ -289,28 +277,20 @@
             
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div>
-                <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white">Publications</h2>
-                <p class="text-xs text-slate-500">Peer-reviewed journals, conference papers, and preprints.</p>
+                <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white">Publicações</h2>
+                <p class="text-xs text-slate-500">Artigos em periódicos, conferências e preprints.</p>
               </div>
 
               <!-- Search Bar -->
               <div class="relative w-full sm:w-64">
                 <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-sm"></i>
-                <input type="text" id="pub-search" onkeyup="filterPublications()" placeholder="Search title, author, topic..." class="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100">
+                <input type="text" id="pub-search" onkeyup="filterPublications()" placeholder="Buscar título, autor..." class="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100">
               </div>
-            </div>
-
-            <!-- Filter Pills -->
-            <div class="flex flex-wrap gap-2 mb-6">
-              <button onclick="filterPubCategory('all')" class="pub-filter-btn active px-3 py-1 text-xs rounded-full bg-brand-600 text-white font-medium" data-cat="all">All</button>
-              <button onclick="filterPubCategory('journal')" class="pub-filter-btn px-3 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-200 dark:hover:bg-slate-700" data-cat="journal">Journals</button>
-              <button onclick="filterPubCategory('conference')" class="pub-filter-btn px-3 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-200 dark:hover:bg-slate-700" data-cat="conference">Conferences</button>
-              <button onclick="filterPubCategory('preprint')" class="pub-filter-btn px-3 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-200 dark:hover:bg-slate-700" data-cat="preprint">Preprints</button>
             </div>
 
             <!-- Publications List -->
             <div id="publications-list" class="space-y-6">
-              <!-- Dynamically Populated by JavaScript -->
+              <!-- Populated via JavaScript -->
             </div>
 
           </div>
@@ -319,11 +299,9 @@
         <!-- ================= TAB 3: PROJECTS / RESEARCH ================= -->
         <div id="tab-projects" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Active Research & Grants</h2>
-            <p class="text-xs text-slate-500 mb-6">Current lab projects, open-source tools, and interdisciplinary research grants.</p>
-
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <!-- Dynamically Populated -->
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Pesquisa e Projetos</h2>
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+              <!-- Populated via JavaScript -->
             </div>
           </div>
         </div>
@@ -331,23 +309,19 @@
         <!-- ================= TAB 4: TEACHING ================= -->
         <div id="tab-teaching" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Teaching & Mentorship</h2>
-            <p class="text-xs text-slate-500 mb-6">Courses offered at the undergraduate and graduate level.</p>
-
-            <div id="courses-list" class="space-y-4">
-              <!-- Dynamically Populated -->
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Ensino</h2>
+            <div id="courses-list" class="space-y-4 mt-6">
+              <!-- Populated via JavaScript -->
             </div>
           </div>
         </div>
 
-        <!-- ================= TAB 5: NEWS ================= -->
+        <!-- ================= TAB 5: NEWS / CAREER ================= -->
         <div id="tab-news" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Latest News & Updates</h2>
-            <p class="text-xs text-slate-500 mb-6">Recent awards, keynotes, media coverage, and paper acceptances.</p>
-
-            <div id="news-timeline" class="space-y-6">
-              <!-- Dynamically Populated -->
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Carreira</h2>
+            <div id="news-timeline" class="space-y-6 mt-6">
+              <!-- Populated via JavaScript -->
             </div>
           </div>
         </div>
@@ -355,63 +329,81 @@
         <!-- ================= TAB 6: CONTACT ================= -->
         <div id="tab-contact" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Contact & Office Hours</h2>
-            <p class="text-xs text-slate-500 mb-6">Feel free to reach out for research collaboration or student advising.</p>
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Contatos</h2>
+            <p class="text-xs text-slate-500 mb-6">Caso queira agendar um tempo ou me enviar uma mensagem, fique à vontade.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <!-- Contact Info -->
+              <!-- Contact Info Sidebar -->
               <div class="space-y-4 text-sm">
-                <div class="flex items-start gap-3">
-                  <div class="p-2.5 rounded-lg bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400">
-                    <i class="fa-solid fa-building-columns text-lg"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-slate-900 dark:text-white">Office Location</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">ICICS Building, Room 402<br>University of Faculty Demo</p>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-3">
-                  <div class="p-2.5 rounded-lg bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400">
-                    <i class="fa-solid fa-clock text-lg"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-slate-900 dark:text-white">Office Hours</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Tuesdays & Thursdays: 14:00 - 16:00 PST<br>(By appointment or drop-in)</p>
-                  </div>
-                </div>
-
-                <div class="flex items-start gap-3">
-                  <div class="p-2.5 rounded-lg bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400">
+                
+                <div class="flex items-center gap-3">
+                  <div class="p-2.5 rounded-lg bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400 shrink-0">
                     <i class="fa-solid fa-envelope text-lg"></i>
                   </div>
                   <div>
-                    <h4 class="font-bold text-slate-900 dark:text-white">Email Address</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">alex.mercer@faculty.demo.edu</p>
+                    <h4 class="font-bold text-slate-900 dark:text-white">Email</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">leoribeiro0.vet@gmail.com</p>
                   </div>
                 </div>
+
+                <div class="flex items-center gap-3">
+                  <div class="p-2.5 rounded-lg bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400 shrink-0">
+                    <i class="fa-brands fa-linkedin text-lg"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white">LinkedIn</h4>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                      <a href="https://www.linkedin.com/in/leonardo-ribeiro0/" target="_blank" class="hover:underline text-brand-600 dark:text-brand-400">linkedin.com/in/leonardo-ribeiro0/</a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Google Calendar Appointment Slot -->
+                <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 mt-4">
+                  <h4 class="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-brand-600 dark:text-brand-400"></i> Agendamento Online
+                  </h4>
+                  <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Escolha um horário diretamente na minha agenda:</p>
+                  
+                  <!-- Google Calendar Appointment Scheduling Button -->
+                  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+                  <script>
+                  (function() {
+                    var target = document.currentScript;
+                    window.addEventListener('load', function() {
+                      calendar.schedulingButton.load({
+                        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1zzX0JKchwfF11K0Zz2XsGdad_1miUEQcgESEILk-nbC_cAzKDfH9roooHU60V6a8u2b3BKeM_?gv=true',
+                        color: '#0284c7',
+                        label: 'Agende uma reunião',
+                        target,
+                      });
+                    });
+                  })();
+                  </script>
+                </div>
+
               </div>
 
               <!-- Contact Form -->
               <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
                 <div>
-                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Your Name</label>
-                  <input type="text" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Prof. Jane Doe">
+                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Seu Nome</label>
+                  <input type="text" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Seu nome completo">
                 </div>
                 <div>
-                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Your Email</label>
-                  <input type="email" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="jane.doe@university.edu">
+                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Seu Email</label>
+                  <input type="email" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="seuemail@exemplo.com">
                 </div>
                 <div>
-                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Subject</label>
-                  <input type="text" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Research Collaboration Inquiry">
+                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Assunto</label>
+                  <input type="text" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Assunto da mensagem">
                 </div>
                 <div>
-                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Message</label>
-                  <textarea rows="3" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Hello Dr. Mercer, I would like to discuss..."></textarea>
+                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Mensagem</label>
+                  <textarea rows="3" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Escreva sua mensagem..."></textarea>
                 </div>
                 <button type="submit" class="w-full py-2.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs rounded-lg transition shadow-sm">
-                  Send Message
+                  Enviar Mensagem
                 </button>
                 <div id="contact-alert" class="hidden p-3 rounded-lg text-xs font-medium text-center"></div>
               </form>
@@ -426,123 +418,21 @@
   <!-- ================= FOOTER ================= -->
   <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-      <p>© <span id="current-year">2026</span> <span id="footer-name">Dr. Alex Mercer</span>. Built with Faculty.bio Academic Template.</p>
+      <p>© Dr. Leonardo Ribeiro. Última atualização: <span id="last-updated" class="font-medium text-slate-700 dark:text-slate-300"></span></p>
       <div class="flex items-center gap-4">
-        <a href="#" onclick="switchTab('about')" class="hover:underline">About</a>
-        <a href="#" onclick="switchTab('publications')" class="hover:underline">Publications</a>
-        <a href="#" onclick="switchTab('contact')" class="hover:underline">Contact</a>
+        <a href="#" onclick="switchTab('about')" class="hover:underline">Sobre</a>
+        <a href="#" onclick="switchTab('publications')" class="hover:underline">Publicações</a>
+        <a href="#" onclick="switchTab('contact')" class="hover:underline">Contatos</a>
       </div>
     </div>
   </footer>
-
-  <!-- ================= CUSTOMIZATION / BUILDER DRAWER (INTERACTIVE MODE) ================= -->
-  <div id="editor-drawer" class="fixed inset-y-0 right-0 w-full sm:w-[480px] bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
-    <!-- Drawer Header -->
-    <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-slate-50 dark:bg-slate-800/50">
-      <div class="flex items-center gap-2">
-        <i class="fa-solid fa-sliders text-amber-500"></i>
-        <h3 class="font-bold text-sm text-slate-900 dark:text-white">Portfolio Builder & Content Editor</h3>
-      </div>
-      <button id="close-drawer-btn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
-        <i class="fa-solid fa-xmark text-lg"></i>
-      </button>
-    </div>
-
-    <!-- Drawer Tabs -->
-    <div class="flex border-b border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 text-xs font-semibold">
-      <button onclick="switchEditorTab('profile')" class="editor-nav-tab active flex-1 py-2.5 text-center border-b-2 border-brand-600 text-brand-600" data-edtab="profile">Profile</button>
-      <button onclick="switchEditorTab('pubs')" class="editor-nav-tab flex-1 py-2.5 text-center border-b-2 border-transparent text-slate-500 hover:text-slate-700" data-edtab="pubs">Publications</button>
-      <button onclick="switchEditorTab('export')" class="editor-nav-tab flex-1 py-2.5 text-center border-b-2 border-transparent text-slate-500 hover:text-slate-700" data-edtab="export">Export/JSON</button>
-    </div>
-
-    <!-- Drawer Content Scrollable Area -->
-    <div class="p-5 overflow-y-auto flex-1 space-y-5 text-xs">
-
-      <!-- Editor Panel: Profile & Bio -->
-      <div id="edtab-profile" class="ed-panel space-y-4">
-        <div>
-          <label class="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Full Name</label>
-          <input type="text" id="edit-name" oninput="updateProfileLive()" class="w-full p-2 bg-slate-50 dark:bg-slate-800 border rounded-md">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Academic Title</label>
-          <input type="text" id="edit-title" oninput="updateProfileLive()" class="w-full p-2 bg-slate-50 dark:bg-slate-800 border rounded-md">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Department</label>
-          <input type="text" id="edit-dept" oninput="updateProfileLive()" class="w-full p-2 bg-slate-50 dark:bg-slate-800 border rounded-md">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-slate-700 dark:text-slate-300">University / Institution</label>
-          <input type="text" id="edit-univ" oninput="updateProfileLive()" class="w-full p-2 bg-slate-50 dark:bg-slate-800 border rounded-md">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Location</label>
-          <input type="text" id="edit-location" oninput="updateProfileLive()" class="w-full p-2 bg-slate-50 dark:bg-slate-800 border rounded-md">
-        </div>
-        <div>
-          <label class="block font-semibold mb-1 text-slate-700 dark:text-slate-300">Avatar Image URL</label>
-          <input type="text" id="edit-avatar" oninput="updateProfileLive()" class="w-full p-2 bg-slate-50 dark:bg-slate-800 border rounded-md">
-        </div>
-      </div>
-
-      <!-- Editor Panel: Publications Add/Edit -->
-      <div id="edtab-pubs" class="ed-panel hidden space-y-4">
-        <h4 class="font-bold text-slate-800 dark:text-slate-200">Add New Publication</h4>
-        <form id="add-pub-form" onsubmit="addNewPublication(event)" class="space-y-3 p-3 bg-slate-50 dark:bg-slate-800/60 rounded-xl border border-slate-200 dark:border-slate-700">
-          <div>
-            <label class="block font-medium mb-1">Title</label>
-            <input type="text" id="new-pub-title" required class="w-full p-1.5 bg-white dark:bg-slate-900 border rounded">
-          </div>
-          <div>
-            <label class="block font-medium mb-1">Authors</label>
-            <input type="text" id="new-pub-authors" placeholder="Alex Mercer, Jane Doe..." required class="w-full p-1.5 bg-white dark:bg-slate-900 border rounded">
-          </div>
-          <div class="grid grid-cols-2 gap-2">
-            <div>
-              <label class="block font-medium mb-1">Venue / Conference</label>
-              <input type="text" id="new-pub-venue" required placeholder="NeurIPS 2026" class="w-full p-1.5 bg-white dark:bg-slate-900 border rounded">
-            </div>
-            <div>
-              <label class="block font-medium mb-1">Year</label>
-              <input type="text" id="new-pub-year" placeholder="2026" required class="w-full p-1.5 bg-white dark:bg-slate-900 border rounded">
-            </div>
-          </div>
-          <div>
-            <label class="block font-medium mb-1">Category</label>
-            <select id="new-pub-category" class="w-full p-1.5 bg-white dark:bg-slate-900 border rounded">
-              <option value="conference">Conference</option>
-              <option value="journal">Journal</option>
-              <option value="preprint">Preprint</option>
-            </select>
-          </div>
-          <button type="submit" class="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded font-bold transition">
-            + Insert Paper
-          </button>
-        </form>
-      </div>
-
-      <!-- Editor Panel: Export JSON Data -->
-      <div id="edtab-export" class="ed-panel hidden space-y-4">
-        <p class="text-slate-600 dark:text-slate-400">Export your configured site data as JSON or copy page HTML directly.</p>
-        <div>
-          <label class="block font-semibold mb-1">Current State (JSON Data)</label>
-          <textarea id="json-output" rows="10" readonly class="w-full p-2 bg-slate-900 text-emerald-400 font-mono text-[11px] rounded-lg"></textarea>
-        </div>
-        <button onclick="copyJSONConfig()" class="w-full py-2 bg-brand-600 hover:bg-brand-700 text-white rounded font-bold transition flex items-center justify-center gap-2">
-          <i class="fa-regular fa-copy"></i> Copy Configuration JSON
-        </button>
-      </div>
-
-    </div>
-  </div>
 
   <!-- BIBTEX MODAL -->
   <div id="bibtex-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
     <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl p-6">
       <div class="flex justify-between items-center mb-4">
         <h3 class="font-serif font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
-          <i class="fa-solid fa-quote-right text-brand-600"></i> BibTeX Citation
+          <i class="fa-solid fa-quote-right text-brand-600"></i> Citação BibTeX
         </h3>
         <button onclick="closeBibtexModal()" class="text-slate-400 hover:text-slate-600">
           <i class="fa-solid fa-xmark text-lg"></i>
@@ -551,7 +441,7 @@
       <pre id="bibtex-content" class="bg-slate-950 text-emerald-400 p-4 rounded-xl font-mono text-xs overflow-x-auto leading-relaxed"></pre>
       <div class="mt-4 flex justify-end gap-2">
         <button onclick="copyBibtexText()" class="px-4 py-2 bg-brand-600 text-white rounded-lg text-xs font-semibold hover:bg-brand-700 transition">
-          Copy BibTeX
+          Copiar BibTeX
         </button>
       </div>
     </div>
@@ -559,56 +449,20 @@
 
   <!-- JavaScript Logic -->
   <script>
-    // ================= GLOBAL STATE DATA =================
-    let portfolioData = {
-      profile: {
-        name: "Dr. Alex Mercer, Ph.D.",
-        title: "Assistant Professor / Postdoctoral Lead",
-        dept: "Dept. of Computer Science & AI Lab",
-        univ: "University of Faculty Demo",
-        location: "Vancouver, BC, Canada",
-        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400",
-        scholar: "https://scholar.google.com",
-        orcid: "https://orcid.org",
-        github: "https://github.com",
-        linkedin: "https://linkedin.com"
-      },
+    // ================= STATIC PORTFOLIO DATA =================
+    const portfolioData = {
       publications: [
         {
           id: 1,
           title: "Aligning Large Language Models with Multi-Agent Reinforcement Learning",
-          authors: "Alex Mercer, Sarah Jenkins, David Zhang",
+          authors: "Leonardo Ribeiro, Sarah Jenkins, David Zhang",
           venue: "NeurIPS 2025 (Oral Presentation)",
           year: 2025,
           category: "conference",
           citations: 142,
           pdfUrl: "#",
           codeUrl: "#",
-          bibtex: `@inproceedings{mercer2025aligning,\n  title={Aligning Large Language Models with Multi-Agent Reinforcement Learning},\n  author={Mercer, Alex and Jenkins, Sarah and Zhang, David},\n  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},\n  year={2025}\n}`
-        },
-        {
-          id: 2,
-          title: "Mechanistic Interpretability of Self-Attention Layers in Vision Transformers",
-          authors: "Alex Mercer, Robert Chen",
-          venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)",
-          year: 2024,
-          category: "journal",
-          citations: 89,
-          pdfUrl: "#",
-          codeUrl: "#",
-          bibtex: `@article{mercer2024interpretability,\n  title={Mechanistic Interpretability of Self-Attention Layers in Vision Transformers},\n  author={Mercer, Alex and Chen, Robert},\n  journal={IEEE TPAMI},\n  year={2024}\n}`
-        },
-        {
-          id: 3,
-          title: "Zero-Shot Reasoning Limits in Dense Transformer Architectures",
-          authors: "Alex Mercer, Elena Rostova, Mark Davis",
-          venue: "arXiv preprint arXiv:2403.09122",
-          year: 2024,
-          category: "preprint",
-          citations: 23,
-          pdfUrl: "#",
-          codeUrl: "#",
-          bibtex: `@article{mercer2024zeroshot,\n  title={Zero-Shot Reasoning Limits in Dense Transformer Architectures},\n  author={Mercer, Alex and Rostova, Elena and Davis, Mark},\n  journal={arXiv preprint arXiv:2403.09122},\n  year={2024}\n}`
+          bibtex: `@inproceedings{ribeiro2025aligning,\n  title={Aligning Large Language Models with Multi-Agent Reinforcement Learning},\n  author={Ribeiro, Leonardo and Jenkins, Sarah and Zhang, David},\n  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},\n  year={2025}\n}`
         }
       ],
       projects: [
@@ -616,12 +470,6 @@
           title: "Trustworthy Alignment Benchmark (TAB)",
           description: "An open-source benchmark suite evaluating safety, honesty, and reasoning fidelity in frontier LLMs.",
           tags: ["Python", "PyTorch", "LLM Evaluation"],
-          link: "https://github.com"
-        },
-        {
-          title: "Neural Interpretability Toolkit",
-          description: "Visualizing high-dimensional activation vectors inside multi-head attention blocks in real-time.",
-          tags: ["D3.js", "Transformers", "Tooling"],
           link: "https://github.com"
         }
       ],
@@ -631,26 +479,12 @@
           title: "Advanced Topics in Safe & Interpretable AI",
           term: "Winter 2026 (Graduate Level)",
           description: "Focusing on RLHF, mechanistic interpretability, guardrails, and agent alignment."
-        },
-        {
-          code: "CPSC 340",
-          title: "Machine Learning and Data Mining",
-          term: "Fall 2025 (Undergraduate)",
-          description: "Introduction to supervised learning, linear models, neural networks, and clustering algorithms."
         }
       ],
       news: [
         {
-          date: "October 2026",
-          text: "Selected to serve as Area Chair for NeurIPS 2026 AI Ethics Track."
-        },
-        {
-          date: "June 2026",
-          text: "Awarded NSERC Discovery Grant for research on Multi-Agent Interpretability ($180,000)."
-        },
-        {
-          date: "January 2026",
-          text: "Our paper on Transformer Attention received Best Paper Honorable Mention."
+          date: "Outubro 2026",
+          text: "Selecionado como Area Chair para o NeurIPS 2026."
         }
       ]
     };
@@ -661,7 +495,6 @@
       const target = document.getElementById(`tab-${tabId}`);
       if (target) target.classList.add('active');
 
-      // Update Nav Buttons State
       document.querySelectorAll('.nav-tab').forEach(btn => {
         if (btn.dataset.tab === tabId) {
           btn.className = "nav-tab active px-3 py-2 rounded-md text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 transition font-medium";
@@ -670,15 +503,16 @@
         }
       });
 
-      // Close mobile menu if open
       document.getElementById('mobile-menu').classList.add('hidden');
     }
 
     // ================= RENDER FUNCTIONS =================
     function renderPublications(filtered = portfolioData.publications) {
       const list = document.getElementById('publications-list');
+      if (!list) return;
+
       if (filtered.length === 0) {
-        list.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">No publications matching criteria.</p>`;
+        list.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">Nenhuma publicação encontrada.</p>`;
         return;
       }
 
@@ -688,11 +522,7 @@
             <h3 class="text-sm font-bold text-slate-900 dark:text-white leading-snug">
               ${pub.title}
             </h3>
-            <span class="shrink-0 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase ${
-              pub.category === 'conference' ? 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300' :
-              pub.category === 'journal' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' :
-              'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300'
-            }">${pub.category}</span>
+            <span class="shrink-0 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">${pub.category}</span>
           </div>
 
           <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">${pub.authors}</p>
@@ -701,10 +531,10 @@
           <div class="mt-3 flex items-center justify-between text-xs pt-2 border-t border-slate-200/50 dark:border-slate-700/50">
             <div class="flex items-center gap-3">
               <a href="${pub.pdfUrl}" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1 font-medium"><i class="fa-regular fa-file-pdf text-rose-500"></i> PDF</a>
-              <a href="${pub.codeUrl}" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1 font-medium"><i class="fa-brands fa-github text-slate-700 dark:text-slate-300"></i> Code</a>
+              <a href="${pub.codeUrl}" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1 font-medium"><i class="fa-brands fa-github text-slate-700 dark:text-slate-300"></i> Código</a>
               <button onclick="openBibtexModal(${pub.id})" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1 font-medium"><i class="fa-solid fa-quote-left text-amber-500"></i> BibTeX</button>
             </div>
-            <span class="text-[11px] font-semibold text-slate-400 bg-slate-200/60 dark:bg-slate-700/60 px-2 py-0.5 rounded">${pub.citations} Citations</span>
+            <span class="text-[11px] font-semibold text-slate-400 bg-slate-200/60 dark:bg-slate-700/60 px-2 py-0.5 rounded">${pub.citations} Citações</span>
           </div>
         </div>
       `).join('');
@@ -712,6 +542,7 @@
 
     function renderProjects() {
       const grid = document.getElementById('projects-grid');
+      if (!grid) return;
       grid.innerHTML = portfolioData.projects.map(proj => `
         <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition flex flex-col justify-between">
           <div>
@@ -722,7 +553,7 @@
             <div class="flex flex-wrap gap-1.5 mb-3">
               ${proj.tags.map(t => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-[10px] font-medium">${t}</span>`).join('')}
             </div>
-            <a href="${proj.link}" target="_blank" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:underline">View Repository <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
+            <a href="${proj.link}" target="_blank" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:underline">Ver Repositório <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
           </div>
         </div>
       `).join('');
@@ -730,6 +561,7 @@
 
     function renderCourses() {
       const list = document.getElementById('courses-list');
+      if (!list) return;
       list.innerHTML = portfolioData.courses.map(c => `
         <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40">
           <div class="flex items-center justify-between mb-1">
@@ -744,37 +576,13 @@
 
     function renderNews() {
       const timeline = document.getElementById('news-timeline');
+      if (!timeline) return;
       timeline.innerHTML = portfolioData.news.map(n => `
         <div class="flex items-start gap-4">
           <span class="shrink-0 text-[11px] font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md">${n.date}</span>
           <p class="text-xs text-slate-700 dark:text-slate-300 pt-0.5 leading-relaxed">${n.text}</p>
         </div>
       `).join('');
-    }
-
-    // ================= PUBLICATION FILTERING & SEARCH =================
-    let currentCategory = 'all';
-
-    function filterPubCategory(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.pub-filter-btn').forEach(btn => {
-        if (btn.dataset.cat === cat) {
-          btn.className = "pub-filter-btn active px-3 py-1 text-xs rounded-full bg-brand-600 text-white font-medium";
-        } else {
-          btn.className = "pub-filter-btn px-3 py-1 text-xs rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-200 dark:hover:bg-slate-700";
-        }
-      });
-      filterPublications();
-    }
-
-    function filterPublications() {
-      const query = document.getElementById('pub-search').value.toLowerCase();
-      const filtered = portfolioData.publications.filter(pub => {
-        const matchesCategory = currentCategory === 'all' || pub.category === currentCategory;
-        const matchesSearch = pub.title.toLowerCase().includes(query) || pub.authors.toLowerCase().includes(query) || pub.venue.toLowerCase().includes(query);
-        return matchesCategory && matchesSearch;
-      });
-      renderPublications(filtered);
     }
 
     // ================= BIBTEX MODAL =================
@@ -792,130 +600,52 @@
 
     function copyBibtexText() {
       const text = document.getElementById('bibtex-content').innerText;
-      const el = document.createElement('textarea');
-      el.value = text;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      alert('BibTeX copied to clipboard!');
-    }
-
-    // ================= LIVE BUILDER / EDITOR DRAWER =================
-    const drawer = document.getElementById('editor-drawer');
-    document.getElementById('editor-toggle-btn').addEventListener('click', () => {
-      drawer.classList.remove('translate-x-full');
-      populateEditorInputs();
-    });
-    document.getElementById('close-drawer-btn').addEventListener('click', () => {
-      drawer.classList.add('translate-x-full');
-    });
-
-    function switchEditorTab(tabKey) {
-      document.querySelectorAll('.ed-panel').forEach(p => p.classList.add('hidden'));
-      document.getElementById(`edtab-${tabKey}`).classList.remove('hidden');
-
-      document.querySelectorAll('.editor-nav-tab').forEach(btn => {
-        if (btn.dataset.edtab === tabKey) {
-          btn.className = "editor-nav-tab active flex-1 py-2.5 text-center border-b-2 border-brand-600 text-brand-600 font-bold";
-        } else {
-          btn.className = "editor-nav-tab flex-1 py-2.5 text-center border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-semibold";
-        }
+      navigator.clipboard.writeText(text).then(() => {
+        alert('BibTeX copiado para a área de transferência!');
       });
-
-      if (tabKey === 'export') {
-        document.getElementById('json-output').value = JSON.stringify(portfolioData, null, 2);
-      }
     }
 
-    function populateEditorInputs() {
-      document.getElementById('edit-name').value = portfolioData.profile.name;
-      document.getElementById('edit-title').value = portfolioData.profile.title;
-      document.getElementById('edit-dept').value = portfolioData.profile.dept;
-      document.getElementById('edit-univ').value = portfolioData.profile.univ;
-      document.getElementById('edit-location').value = portfolioData.profile.location;
-      document.getElementById('edit-avatar').value = portfolioData.profile.avatar;
-    }
-
-    function updateProfileLive() {
-      portfolioData.profile.name = document.getElementById('edit-name').value;
-      portfolioData.profile.title = document.getElementById('edit-title').value;
-      portfolioData.profile.dept = document.getElementById('edit-dept').value;
-      portfolioData.profile.univ = document.getElementById('edit-univ').value;
-      portfolioData.profile.location = document.getElementById('edit-location').value;
-      portfolioData.profile.avatar = document.getElementById('edit-avatar').value;
-
-      // Update UI elements instantly
-      document.getElementById('nav-brand-name').innerText = portfolioData.profile.name.split(',')[0];
-      document.getElementById('display-name').innerText = portfolioData.profile.name;
-      document.getElementById('display-title').innerText = portfolioData.profile.title;
-      document.getElementById('display-dept').innerText = portfolioData.profile.dept;
-      document.getElementById('display-univ').innerText = portfolioData.profile.univ;
-      document.getElementById('display-location').innerText = portfolioData.profile.location;
-      document.getElementById('display-avatar').src = portfolioData.profile.avatar;
-      document.getElementById('footer-name').innerText = portfolioData.profile.name;
-    }
-
-    function addNewPublication(e) {
-      e.preventDefault();
-      const newPub = {
-        id: Date.now(),
-        title: document.getElementById('new-pub-title').value,
-        authors: document.getElementById('new-pub-authors').value,
-        venue: document.getElementById('new-pub-venue').value,
-        year: parseInt(document.getElementById('new-pub-year').value),
-        category: document.getElementById('new-pub-category').value,
-        citations: 0,
-        pdfUrl: "#",
-        codeUrl: "#",
-        bibtex: `@article{paper${Date.now()},\n  title={${document.getElementById('new-pub-title').value}},\n  author={${document.getElementById('new-pub-authors').value}},\n  year={${document.getElementById('new-pub-year').value}}\n}`
-      };
-
-      portfolioData.publications.unshift(newPub);
-      renderPublications();
-      document.getElementById('add-pub-form').reset();
-      alert('New Publication added to active portfolio!');
-    }
-
-    function copyJSONConfig() {
-      const jsonText = document.getElementById('json-output').value;
-      const el = document.createElement('textarea');
-      el.value = jsonText;
-      document.body.appendChild(el);
-      el.select();
-      document.execCommand('copy');
-      document.body.removeChild(el);
-      alert('Portfolio JSON Configuration copied to clipboard!');
-    }
-
-    // ================= CONTACT FORM SIMULATION =================
+    // ================= CONTACT FORM HANDLER =================
     function handleContactSubmit(e) {
       e.preventDefault();
       const alertBox = document.getElementById('contact-alert');
-      alertBox.className = "p-3 rounded-lg text-xs font-medium text-center bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-200 block";
-      alertBox.innerText = "Message sent successfully! Dr. Mercer's lab will reply shortly.";
+      if (alertBox) {
+        alertBox.className = "p-3 rounded-lg text-xs font-medium text-center bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-200 block";
+        alertBox.innerText = "Mensagem enviada com sucesso! Responderemos em breve.";
+      }
       document.getElementById('contact-form').reset();
     }
 
-    // ================= THEME TOGGLE & INITIALIZATION =================
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    themeToggleBtn.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-    });
+    // ================= AUTOMATIC LAST UPDATED DATE =================
+    function setLastUpdatedDate() {
+      const lastUpdatedElement = document.getElementById('last-updated');
+      if (lastUpdatedElement) {
+        const lastModified = new Date(document.lastModified);
+        const formattedDate = lastModified.toLocaleDateString('pt-BR', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        lastUpdatedElement.textContent = formattedDate;
+      }
+    }
 
-    // Mobile Menu Toggle
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    });
+    // ================= EVENT LISTENERS & INIT =================
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+      });
 
-    // On Window Load
-    window.onload = function () {
+      document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+        document.getElementById('mobile-menu')?.classList.toggle('hidden');
+      });
+
       renderPublications();
       renderProjects();
       renderCourses();
       renderNews();
-    };
+      setLastUpdatedDate();
+    });
   </script>
 </body>
 </html>
