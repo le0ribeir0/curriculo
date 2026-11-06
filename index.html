@@ -3,180 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leonardo A. Coelho Ribeiro | Academic Portfolio & Researches </title>
+  <title>Leonardo A. Coelho Ribeiro | Academic Portfolio & Researches</title>
   
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Tailwind Custom Configuration for Dark Mode & Font Setup -->
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#f0f7ff',
-              100: '#e0effe',
-              500: '#0284c7',
-              600: '#0369a1',
-              700: '#035480',
-              900: '#0c2a4a',
-            },
-            academic: {
-              navy: '#0f172a',
-              gold: '#d97706',
-              slate: '#475569',
-            }
+            brand: { 50: '#f0f7ff', 100: '#e0effe', 500: '#0284c7', 600: '#0369a1', 700: '#035480', 900: '#0c2a4a' },
+            academic: { navy: '#0f172a', gold: '#d97706', slate: '#475569' }
           },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Merriweather', 'Georgia', 'serif'],
-            mono: ['Fira Code', 'monospace']
-          }
+          fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Merriweather', 'Georgia', 'serif'], mono: ['Fira Code', 'monospace'] }
         }
       }
     }
   </script>
 
-  <!-- Google Fonts & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-  <!-- Google Calendar Appointment Script Stylesheet -->
   <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
-
-  <style>
-    /* Custom tab display rules */
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
-    
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.05);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(100, 116, 139, 0.4);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(100, 116, 139, 0.6);
-    }
-
-    /* Fix para transparência do Modal de Agendamento do Google Calendar */
-    div[role="dialog"] iframe,
-    iframe[src*="calendar.google.com"] {
-      background-color: #ffffff !important;
-      border-radius: 12px;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans min-h-screen transition-colors duration-200">
 
-  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <!-- TOP NAVIGATION BAR -->
   <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        
-        <!-- Brand / Mobile Menu Toggle -->
         <div class="flex items-center space-x-3">
           <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
             <i class="fa-solid fa-bars text-xl"></i>
           </button>
-          <!---
-          <span class="font-serif font-bold text-lg text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
-            <i class="fa-solid fa-graduation-cap text-brand-600 dark:text-brand-500"></i> --->
-            <span><!--- Dr. Leonardo ---> </span>
-          </span>
         </div>
 
-        <!-- Desktop Navigation Tabs -->
         <nav class="hidden md:flex space-x-1 lg:space-x-2 text-sm font-medium">
-          <button onclick="switchTab('about')" class="nav-tab active px-3 py-2 rounded-md text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 transition" data-tab="about">
-            <i class="fa-regular fa-user mr-1.5"></i>Sobre
-          </button>
-          <button onclick="switchTab('publications')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="publications">
-            <i class="fa-solid fa-book mr-1.5"></i>Publicações
-          </button>
-          <button onclick="switchTab('projects')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="projects">
-            <i class="fa-solid fa-flask mr-1.5"></i>Pesquisa e Projetos
-          </button>
-          <button onclick="switchTab('teaching')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="teaching">
-            <i class="fa-solid fa-chalkboard-user mr-1.5"></i>Ensino
-          </button>
-          <button onclick="switchTab('news')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="news">
-            <i class="fa-regular fa-newspaper mr-1.5"></i>Carreira
-          </button>
-          <button onclick="switchTab('contact')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" data-tab="contact">
-            <i class="fa-regular fa-envelope mr-1.5"></i>Contatos
-          </button>
+          <button onclick="switchTab('about')" class="nav-tab active px-3 py-2 rounded-md text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 transition" data-tab="about"><i class="fa-regular fa-user mr-1.5"></i>About</button>
+          <button onclick="switchTab('publications')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="publications"><i class="fa-solid fa-book mr-1.5"></i>Publications</button>
+          <button onclick="switchTab('projects')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="projects"><i class="fa-solid fa-flask mr-1.5"></i>Research & Projects</button>
+          <button onclick="switchTab('teaching')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="teaching"><i class="fa-solid fa-chalkboard-user mr-1.5"></i>Teaching</button>
+          <button onclick="switchTab('news')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="news"><i class="fa-regular fa-newspaper mr-1.5"></i>Career</button>
+          <button onclick="switchTab('contact')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="contact"><i class="fa-regular fa-envelope mr-1.5"></i>Contact</button>
         </nav>
 
-        <!-- Right Utilities: Theme Toggle -->
         <div class="flex items-center space-x-2 sm:space-x-3">
-          <button id="theme-toggle" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none" title="Toggle Light/Dark Theme">
-            <i class="fa-solid fa-moon text-lg dark:hidden"></i>
-            <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
-          </button>
+          <div class="flex items-center space-x-2 sm:space-x-3">
+            <a href="index-pt.html" class="px-2.5 py-1 text-xs font-semibold rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 transition">PT</a>
+          </div>
+          <div class="flex items-center space-x-2 sm:space-x-3">
+            <a href="index-es.html" class="px-2.5 py-1 text-xs font-semibold rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 transition">ES</a>
+            <button id="theme-toggle" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+              <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+              <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+            </button>
+          </div>
         </div>
-
       </div>
     </div>
 
-    <!-- Mobile Dropdown Navigation -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-1">
-      <button onclick="switchTab('about')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="about"><i class="fa-regular fa-user mr-2"></i>Sobre</button>
-      <button onclick="switchTab('publications')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="publications"><i class="fa-solid fa-book mr-2"></i>Publicações</button>
-      <button onclick="switchTab('projects')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="projects"><i class="fa-solid fa-flask mr-2"></i>Pesquisa e Projetos</button>
-      <button onclick="switchTab('teaching')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="teaching"><i class="fa-solid fa-chalkboard-user mr-2"></i>Ensino</button>
-      <button onclick="switchTab('news')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="news"><i class="fa-regular fa-newspaper mr-2"></i>Carreira</button>
-      <button onclick="switchTab('contact')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 font-medium" data-tab="contact"><i class="fa-regular fa-envelope mr-2"></i>Contatos</button>
+      <button onclick="switchTab('about')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-regular fa-user mr-2"></i>About</button>
+      <button onclick="switchTab('publications')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-solid fa-book mr-2"></i>Publications</button>
+      <button onclick="switchTab('projects')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-solid fa-flask mr-2"></i>Research & Projects</button>
+      <button onclick="switchTab('teaching')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-solid fa-chalkboard-user mr-2"></i>Teaching</button>
+      <button onclick="switchTab('news')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-regular fa-newspaper mr-2"></i>Career</button>
+      <button onclick="switchTab('contact')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-regular fa-envelope mr-2"></i>Contact</button>
     </div>
   </header>
 
-  <!-- ================= MAIN CONTAINER ================= -->
+  <!-- MAIN CONTAINER -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-      <!-- Left Column / Sticky Profile Sidebar -->
+      <!-- Left Sidebar -->
       <aside class="lg:col-span-4">
         <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm sticky top-24">
-          
-          <!-- Profile Avatar & Badges -->
           <div class="text-center">
             <div class="relative inline-block mb-4">
               <img src="https://lh3.googleusercontent.com/a/ACg8ocJRexBJX5I0gfCIaslctHx05RGyVGQvTfNWiFFgvmtAZMaNHhlW=s288-c-no" 
                    alt="Leonardo Profile Picture" 
-                   class="w-36 h-36 sm:w-44 sm:h-44 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-md mx-auto"
-                   onerror="this.src='https://placehold.co/400x400/0284c7/white?text=Dr.+Leonardo'">
-              <span class="absolute bottom-2 right-2 bg-emerald-500 text-white p-1.5 rounded-full ring-4 ring-white dark:ring-slate-900" title="Available for Collaboration">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-              </span>
+                   class="w-36 h-36 sm:w-44 sm:h-44 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-md mx-auto">
             </div>
-
             <h1 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Leonardo A. Coelho Ribeiro</h1>
-            <p class="text-brand-600 dark:text-brand-400 font-medium text-sm mt-1">Chefe Controladoria -  Grupo Umuarama</p>
-            <br>
-            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">MSc. Animal Science | University of Wisconsin- Madison, USA</p>
-            <br>
-            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Mestre em Produção e Nutrição de Ruminantes - Zootecnia | Universidade Federal de Lavras - UFLA</p>
-            <br>
-            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Médico Veterinário - CRMV/MG 18618 | Universidade Federal de Lavras - UFLA</p>
-            <br>
-            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Cientista de Dados <i>graduação em andamento</i> | Instituto Federal de Mato Grosso - IFMT</p> 
-            <br>
-
-            <div class="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mt-2">
+            <p class="text-brand-600 dark:text-brand-400 font-medium text-sm mt-1">Head of Financial Controlling & Data Governance | Umuarama Group</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-2">MSc. Animal Science | University of Wisconsin-Madison, USA</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">MSc. in Ruminant Production and Nutrition | Federal University of Lavras - UFLA</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">B.S. Veterinary Medicine | Federal University of Lavras - UFLA</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">B.Tech in Data Science & Artificial Inteligence (<i>In progress</i>) | Federal Institute of Mato Grosso - IFMT</p> 
+            <div class="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mt-3">
               <i class="fa-solid fa-location-dot text-rose-500"></i>
-              <span>Cuiabá, Mato Grosso, Brasil</span>
+              <span>Cuiabá, Mato Grosso, Brazil</span>
             </div>
           </div>
 
@@ -198,535 +118,119 @@
 
           <!-- Action Buttons -->
           <div class="mt-6 space-y-2">
-            <!---
-            <a href="#" download class="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm rounded-xl shadow-sm transition">
-              <i class="fa-solid fa-file-arrow-down"></i> Download Curriculum Vitae
-            </a>
-            --->
             <button onclick="switchTab('contact')" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium text-sm rounded-xl transition">
-              <i class="fa-regular fa-paper-plane"></i> Entre em Contato
+              <i class="fa-regular fa-paper-plane"></i> Get in touch
             </button>
           </div>
-
-          <!-- Quick Metrics / Citation Summary Card -->
-          <div class="mt-6 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 grid grid-cols-3 text-center">
-            <div>
-              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400"> <!---1,420+ --></span>
-              <span class="text-[10px] uppercase font-semibold text-slate-400">Citações</span>
-            </div>
-            <div>
-              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400"> <!1--- 18> </span>
-              <span class="text-[10px] uppercase font-semibold text-slate-400">h-index</span>
-            </div>
-            <div>
-              <span class="block text-xl font-bold text-brand-600 dark:text-brand-400"> <!--- 24 ---> </span>
-              <span class="text-[10px] uppercase font-semibold text-slate-400">Artigos</span>
-            </div>
-          </div>
-
         </div>
       </aside>
 
-      <!-- Right Column / Content Panels -->
+      <!-- Content Panels -->
       <section class="lg:col-span-8 space-y-8">
-
-        <!-- ================= TAB 1: ABOUT / BIOGRAPHY ================= -->
-        <div id="tab-about" class="tab-content active space-y-8">
-          
-          <!-- Bio Header -->
+        <!-- ABOUT TAB -->
+        <div id="tab-about" class="tab-content active space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
             <h2 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
-              <i class="fa-solid fa-chevron-right text-brand-600 text-xl"></i> Sobre mim
+              <i class="fa-solid fa-chevron-right text-brand-600 text-xl"></i> About Me
             </h2>
             <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed">
-              <p>
-               👋 Olá! Sou um pesquisador, sou brasileiro, e médico veterinário.                                                                                    Com mestrado em zootecnia, minha vida de resumo em desenvolvimento e inovações para a agropecuária.
-              </p>
-                <p>
-                Minhas pesquisas, concentram-se aplicação de modelos preditivos.
-                Cheguei a publicar alguns artigos nessa área.
-                </p>
-                <p>
-                Valorizo o ensino, tanto em sala de aula quanto na mentoria de estudantes. Lecionei algumas disciplinas de biologia, geográfia & história e estatística em diversos níveis, abrangendo o ensino técnico, médio e a graduação.
-                </p>
-                <p>Atualmente sou chefe da controladoria do Grupo Umuarama - Cuiabá/MT. Em 2026 tomei a iniciativa de cursar um segundo curso de graduação em Ciência de dados e Inteligência Artificial no Instituto Federal de Mato Grosso - IFMT. Tranformando ideias em realidade com organização e planejamento especializado venho conciliando a <i>dual</i> rotina.
-                </p>
-                <p>No meu tempo livre adoro pescar! Sim! A calma, a paciência e relaxamento de uma pescaria me faz pensar em soluções aos desafios das análises aos dados.
-                </p>
-                <p>☕️ Já nas pequenas pausas diárias da rotina adoro saborear minhas bebidas favoritas, um café e/ou um cappuccino!
-                </p>
-              </p>
-            </div>
-
-            <!-- Research Interests Tags -->
-            <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
-              <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Principais Interesses</h3>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Deep Learning</span>
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Machine Learning</span>
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Data Science</span>
-                <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Precision Livestock</span>
-              </div>
+              <p>👋 Hello! I'm a Brazilian researcher and veterinarian with an MSc in Animal Science, focusing on agricultural development and innovations.</p>
+              <p>My research centers on applying predictive models and machine learning algorithms to livestock production systems.</p>
+              <p>Currently, I serve as head of financial controlling and data governance at Grupo Umuarama in Cuiabá, MT. In 2026, I started a second degree in Data Science and Artificial Intelligence at the Federal Institute of Mato Grosso (IFMT).</p>
             </div>
           </div>
 
+          <!-- Research Interests Tags -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Research Interests</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Deep Learning</span>
+              <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Machine Learning</span>
+              <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Data Science</span>
+              <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Precision Livestock</span>
+            </div>
+          </div>
         </div>
 
-        <!-- ================= TAB 2: PUBLICATIONS ================= -->
+        <!-- PUBLICATIONS TAB -->
         <div id="tab-publications" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-              <div>
-                <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white">Publicações</h2>
-                <p class="text-xs text-slate-500">Artigos em periódicos, conferências e preprints.</p>
-              </div>
-
-              <!-- Search Bar -->
-              <div class="relative w-full sm:w-64">
-                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-sm"></i>
-                <input type="text" id="pub-search" onkeyup="filterPublications()" placeholder="Buscar título, autor..." class="w-full pl-9 pr-3 py-1.5 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100">
-              </div>
-            </div>
-
-            <!-- Publications List -->
-            <div id="publications-list" class="space-y-6">
-              <!-- Populated via JavaScript -->
-            </div>
-
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-4">Publications</h2>
+            <div id="publications-list" class="space-y-6"></div>
           </div>
         </div>
 
-        <!-- ================= TAB 3: PROJECTS / RESEARCH ================= -->
+        <!-- PROJECTS TAB -->
         <div id="tab-projects" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Pesquisa e Projetos</h2>
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              <!-- Populated via JavaScript -->
-            </div>
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Research & Projects</h2>
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"></div>
           </div>
         </div>
 
-        <!-- ================= TAB 4: TEACHING ================= -->
+        <!-- TEACHING TAB -->
         <div id="tab-teaching" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Ensino</h2>
-            <div id="courses-list" class="space-y-4 mt-6">
-              <!-- Populated via JavaScript -->
-            </div>
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Teaching</h2>
+            <div id="courses-list" class="space-y-4 mt-6"></div>
           </div>
         </div>
 
-        <!-- ================= TAB 5: NEWS / CAREER ================= -->
+        <!-- CAREER TAB -->
         <div id="tab-news" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Carreira</h2>
-            <div id="news-timeline" class="space-y-6 mt-6">
-              <!-- Populated via JavaScript -->
-            </div>
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Career</h2>
+            <div id="news-timeline" class="space-y-6 mt-6"></div>
           </div>
         </div>
 
-        <!-- ================= TAB 6: CONTACT ================= -->
+        <!-- CONTACT TAB -->
         <div id="tab-contact" class="tab-content space-y-6">
           <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
-            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Contatos</h2>
-            <p class="text-xs text-slate-500 mb-6">Caso queira agendar um tempo ou me enviar uma mensagem, fique à vontade.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <!-- Contact Info Sidebar -->
-              <div class="space-y-4 text-sm">
-                
-                <div class="flex items-center gap-3">
-                  <div class="p-2.5 rounded-lg bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400 shrink-0">
-                    <i class="fa-solid fa-envelope text-lg"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-slate-900 dark:text-white">Email</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">leoribeiro0.vet@gmail.com</p>
-                  </div>
-                </div>
-
-                <div class="flex items-center gap-3">
-                  <div class="p-2.5 rounded-lg bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-brand-400 shrink-0">
-                    <i class="fa-brands fa-linkedin text-lg"></i>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-slate-900 dark:text-white">LinkedIn</h4>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">
-                      <a href="https://www.linkedin.com/in/leonardo-ribeiro0/" target="_blank" class="hover:underline text-brand-600 dark:text-slate-400">linkedin.com/in/leonardo-ribeiro0/</a>
-                    </p>
-                  </div>
-                </div>
-
-                <!-- Google Calendar Appointment Slot -->
-                <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 mt-4">
-                  <h4 class="font-bold text-slate-900 dark:text-white mb-2 flex items-center gap-2">
-                    <i class="fa-solid fa-calendar-check text-brand-600 dark:text-brand-400"></i> Agendamento Online
-                  </h4>
-                  <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">Escolha um horário diretamente na minha agenda:</p>
-                  
-                  <!-- Google Calendar Appointment Scheduling Button -->
-                  <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
-                  <script>
-                  (function() {
-                    var target = document.currentScript;
-                    window.addEventListener('load', function() {
-                      calendar.schedulingButton.load({
-                        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1zzX0JKchwfF11K0Zz2XsGdad_1miUEQcgESEILk-nbC_cAzKDfH9roooHU60V6a8u2b3BKeM_?gv=true',
-                        color: '#0284c7',
-                        label: 'Agende uma reunião',
-                        target,
-                      });
-                    });
-                  })();
-                  </script>
-                </div>
-
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Contact</h2>
+            <p class="text-xs text-slate-500 mb-6">Feel free to reach out or schedule a meeting.</p>
+            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Your Name</label>
+                <input type="text" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border rounded-lg">
               </div>
-
-              <!-- Contact Form -->
-              <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
-                <div>
-                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Seu Nome</label>
-                  <input type="text" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Seu nome completo">
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Seu Email</label>
-                  <input type="email" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="seuemail@exemplo.com">
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Assunto</label>
-                  <input type="text" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Assunto da mensagem">
-                </div>
-                <div>
-                  <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Mensagem</label>
-                  <textarea rows="3" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 text-slate-800 dark:text-slate-100" placeholder="Escreva sua mensagem..."></textarea>
-                </div>
-                <button type="submit" class="w-full py-2.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs rounded-lg transition shadow-sm">
-                  Enviar Mensagem
-                </button>
-                <div id="contact-alert" class="hidden p-3 rounded-lg text-xs font-medium text-center"></div>
-              </form>
-            </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Your Email</label>
+                <input type="email" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border rounded-lg">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Message</label>
+                <textarea rows="3" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border rounded-lg"></textarea>
+              </div>
+              <button type="submit" class="w-full py-2.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs rounded-lg transition">Send Message</button>
+              <div id="contact-alert" class="hidden p-3 rounded-lg text-xs font-medium text-center"></div>
+            </form>
           </div>
         </div>
-
       </section>
     </div>
   </main>
 
-  <!-- ================= FOOTER ================= -->
   <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-      <p>© 2026 Leonardo Ribeiro <center>Última atualização:<span id="last-updated" class="font-medium text-slate-700 dark:text-slate-300"></span></center></p>
-      <div class="flex items-center gap-4">
-        <a href="#" onclick="switchTab('about')" class="hover:underline">Sobre</a>
-        <a href="#" onclick="switchTab('publications')" class="hover:underline">Publicações</a>
-        <a href="#" onclick="switchTab('contact')" class="hover:underline">Contatos</a>
-      </div>
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+      <p>© 2026 Leonardo Coelho Ribeiro | Last updated: <span id="last-updated" class="font-medium text-slate-700 dark:text-slate-300"></span></p>
     </div>
   </footer>
 
   <!-- BIBTEX MODAL -->
   <div id="bibtex-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-xl w-full border border-slate-200 dark:border-slate-800 shadow-2xl p-6">
+    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-xl w-full border p-6 shadow-2xl">
       <div class="flex justify-between items-center mb-4">
-        <h3 class="font-serif font-bold text-base text-slate-900 dark:text-white flex items-center gap-2">
-          <i class="fa-solid fa-quote-right text-brand-600"></i> Citação BibTeX
-        </h3>
-        <button onclick="closeBibtexModal()" class="text-slate-400 hover:text-slate-600">
-          <i class="fa-solid fa-xmark text-lg"></i>
-        </button>
+        <h3 class="font-serif font-bold text-base text-slate-900 dark:text-white">BibTeX Citation</h3>
+        <button onclick="closeBibtexModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
-      <pre id="bibtex-content" class="bg-slate-950 text-emerald-400 p-4 rounded-xl font-mono text-xs overflow-x-auto leading-relaxed"></pre>
-      <div class="mt-4 flex justify-end gap-2">
-        <button onclick="copyBibtexText()" class="px-4 py-2 bg-brand-600 text-white rounded-lg text-xs font-semibold hover:bg-brand-700 transition">
-          Copiar BibTeX
-        </button>
+      <pre id="bibtex-content" class="bg-slate-950 text-emerald-400 p-4 rounded-xl font-mono text-xs overflow-x-auto"></pre>
+      <div class="mt-4 flex justify-end">
+        <button onclick="copyBibtexText()" class="px-4 py-2 bg-brand-600 text-white rounded-lg text-xs font-semibold">Copy BibTeX</button>
       </div>
     </div>
   </div>
 
-  <!-- JavaScript Logic -->
-  <script>
-    // ================= STATIC PORTFOLIO DATA =================
-    const portfolioData = {
-      publications: [
-          {
-          id: 3,
-          title: "Secondary analysis of feed intake, calcemia, and assessment of immune function in the subsequent periparturient period of cows that responded to high- and low-energy diets during late lactation",
-          authors: "T.O. Cunha, P.L.J. Monteiro, Jr., W.S. Frizzarini, N. Teixeira, L.C. Ribeiro, R.D. Shaver, M.Z. Toledo, J.P.N. Martins, M.C. Wiltbank, L.L. Hernandez",
-          venue: "Journal of Dairy Science",
-          year: 2026,
-          category: "journal article",
-          citations: 24,
-          pdfUrl: "https://www.journalofdairyscience.org/action/showPdf?pii=S0022-0302%2825%2901018-5",
-          doi: "https://doi.org/10.3168/jds.2025-26343",
-          codeUrl: "#",
-          bibtex: `@ARTICLE{Cunha2026-il,
-          title     = "Secondary analysis of feed intake, calcemia, and assessment of immune function in the subsequent periparturient period of cows that responded to high- and low-energy diets during late lactation",
-          author = "Cunha, T. O. and Monteiro, Jr., P. L. J. and Frizzarini, W. S. and Teixeira, N. and Ribeiro, L. C. and Shaver, R. D. and Toledo, M. Z. and Martins, J. P. N. and Wiltbank, M. C. and Hernandez, L. L.", 
-          abstract  = "The purpose of this study was to use a secondary analysis to investigate the use of feeding high and low-energy diets to alter BCS at dry-off, and to assess the subsequent changes in BCS on feed intake, calcemia, and assessment of immune function, including inflammation, during the periparturient period. Multiparous Holstein lactating dairy cows at 150 d of gestation were blocked by expected calving date and randomly assigned to receive one of 2 dietary treatments during late lactation until dry-off, aiming to maintain or decrease BCS. To this end, a low-energy diet (LE; 1.54 $\pm$ 0.01 Mcal/kg DM; n = 27) was formulated not to exceed energy requirements, and a high-energy diet (HE; 1.8 $\pm$ 0.01 Mcal/kg DM; n = 28) was formulated to exceed energy requirements based on the NEL of cows during late lactation. The HE cows that gained $\geq$0.5 BCS and LE cows that lost, maintained, or gained $\leq$0.25 BCS were included in this study for analysis. Cows that did not respond to dietary treatment were not included in the analysis, resulting in a cohort of 40 cows: 20 cows in the HE group that responded, and 20 cows in the LE group that responded to dietary treatments. After dry-off, all cows were fed the same diets for the duration of the study. In the last week of gestation, the BCS of the HE and LE cows averaged 3.85 and 3.26 $\pm$ 0.1, respectively. During the last 10 d prepartum, HE cows consumed, on average, 1.6 kg DM per day less than LE cows. Plasma concentrations of IL-6 and haptoglobin did not differ between groups 7 d before parturition (725 $\pm$ 147 pg/mL and 0.57 $\pm$ 0.04 ng/mL, respectively). Serum leptin concentrations also did not differ between groups 7 d before parturition. No differences were detected in ionized calcium, total magnesium (Mg), and total phosphorus (P) between groups from -1 to 3 DIM. Nonesterified fatty acid concentrations tended to be elevated in HE cows from -7 to 7 DIM. Neutrophil phagocytic capacity, oxidative burst, and the expression of the cellular adhesion selectin CD62L were also similar between groups. The expression of the cellular adhesion integrin CD18 on neutrophils was increased in the LE group at 2 DIM but was not different at 0 and 7 DIM. Overall, our findings from this secondary analysis of cows that altered BCS in response to dietary treatment indicate that feeding a HE diet during late lactation affected feed intake without significantly altering immune function or calcemia during the periparturient period.",
-          journal   = "J. Dairy Sci.",
-          publisher = "American Dairy Science Association",
-          volume    =  109,
-          number    =  3,
-          pages     = "2989--2999",
-          month     =  mar,
-          year      =  2026,
-          keywords  = "calcium; feed intake; immunity; transition",
-          copyright = "http://creativecommons.org/licenses/by/4.0/",
-          language  = "en"}`
-          },
-                {
-            id: 1,
-            title: "Near-infrared spectroscopy analysis to predict urinary allantoin in dairy cows",
-            authors: "Leonardo A.C. Ribeiro, Guilherme L. Menezes, Tiago Bresolin, Sebastian I. Arriola Apelo, João R. R. Dórea",
-            venue: "JDS Communications",
-            year: 2025,
-            category: "short communication",
-            citations: 3,
-            pdfUrl: "https://www.jdscommun.org/action/showPdf?pii=S2666-9102%2824%2900190-X",
-            doi: "https://doi.org/10.3168/jdsc.2024-0641",
-            codeUrl: "#",
-            bibtex: `@ARTICLE{Ribeiro2025-ut,
-              title     = "Near-infrared spectroscopy analysis to predict urinary allantoin in dairy cows",
-              author    = "Ribeiro, Leonardo A C and Menezes, Guilherme L and Bresolin, Tiago and Arriola Apelo, Sebastian I and D{\'o}rea, Joao R R", 
-              abstract  = "Accurate quantification of rumen microbial proteins is essential in dairy cow nutrition to estimate the ruminal escape of dietary protein and microbial yield. Current quantification methods rely on indirect measurements using purine derivatives (PD). However, these methods require specialized laboratory equipment and trained personnel, resources which are often not available in farm settings. Near-infrared spectroscopy (NIR) has emerged as a powerful tool for predicting the attributes of biological samples, including meat, corn, soybeans, and liquids. Given that allantoin is the primary component in PD, this study aims to (1) develop a predictive model for allantoin levels in urine using NIR and (2) identify key spectral regions for future applications. A total of 182 urine samples were collected from 182 Holstein cows for colorimetric analysis of allantoin and spectral analysis. The raw spectra were preprocessed using scatter correlation methods and spectral derivatives. The partial least squares regression model achieved an R2 of 0.55, a concordance correlation coefficient of 0.73, and a root mean squared error of prediction (RMSEP) of 3.63 mmol/L to predict allantoin concentration from the spectra data set without preprocessing. However, the use of the first derivative (FirstDev) as a preprocessing step reduced the RMSEP from 3.63 mmol/L to 3.25 mmol/L and increased the R2 from 0.55 to 0.62. The FirstDev improves spectral resolution by eliminating the constant baseline, potentially explaining the improved model accuracy. Our method has the potential to evaluate the passage rate of microbial protein represented by the changes in urinary allantoin extraction and the potential to be used for AA dietary balance, thereby improving environmental sustainability and profitability in dairy farms.",
-                journal   = "JDS Commun.",
-                publisher = "American Dairy Science Association",
-                volume    =  6,
-                number    =  2,
-                pages     = "212--216",
-                month     =  mar,
-                year      =  2025,
-                copyright = "http://creativecommons.org/licenses/by/4.0/",
-                language  = "en"
-}`
-        },
-        {
-          id: 2,
-          title: "Disentangling data dependency using cross-validation strategies to evaluate prediction quality of cattle grazing activities using machine learning algorithms and wearable sensor data",
-          authors: "Leonardo Augusto Coelho Ribeiro , Tiago Bresolin , Guilherme Jordão de Magalhães Rosa , Daniel Rume Casagrande , Marina de Arruda Camargo Danes , João Ricardo Rebouças Dórea",
-          venue: "Journal of Animal Science",
-          year: 2021,
-          category: "journal article",
-          citations: 28,
-          pdfUrl: "https://academic.oup.com/jas/article-pdf/99/9/skab206/40307064/skab206.pdf",
-          doi: "https://doi.org/10.1093/jas/skab206",
-          codeUrl: "#",
-          bibtex: `@article{10.1093/jas/skab206,
-          author = {Coelho Ribeiro, Leonardo Augusto and Bresolin, Tiago and Rosa, Guilherme Jordão de Magalhães and Rume Casagrande, Daniel and Danes, Marina de Arruda Camargo and Dórea, João Ricardo Rebouças},
-          title = {Disentangling data dependency using cross-validation strategies to evaluate prediction quality of cattle grazing activities using machine learning algorithms and wearable sensor data},
-          journal = {Journal of Animal Science},
-          volume = {99},
-          number = {9},
-          pages = {skab206},
-          year = {2021},
-          month = {09},
-          abstract = {Wearable sensors have been explored as an alternative for real-time monitoring of cattle feeding behavior in grazing systems. To evaluate the performance of predictive models such as machine learning (ML) techniques, data cross-validation (CV) approaches are often employed. However, due to data dependencies and confounding effects, poorly performed validation strategies may significantly inflate the prediction quality. In this context, our objective was to evaluate the effect of different CV strategies on the prediction of grazing activities in cattle using wearable sensor (accelerometer) data and ML algorithms. Six Nellore bulls (average live weight of 345 ± 21 kg) had their behavior visually classified as grazing or not-grazing for a period of 15 d. Elastic Net Generalized Linear Model (GLM), Random Forest (RF), and Artificial Neural Network (ANN) were employed to predict grazing activity (grazing or not-grazing) using 3-axis accelerometer data. For each analytical method, three CV strategies were evaluated: holdout, leave-one-animal-out (LOAO), and leave-one-day-out (LODO). Algorithms were trained using similar dataset sizes (holdout: n = 57,862; LOAO: n = 56,786; LODO: n = 56,672). Overall, GLM delivered the worst prediction accuracy (53\%) compared with the ML techniques (65\% for both RF and ANN), and ANN performed slightly better than RF for LOAO (73\%) and LODO (64\%) across CV strategies. The holdout yielded the highest nominal accuracy values for all three ML approaches (GLM: 59\%, RF: 76\%, and ANN: 74\%), followed by LODO (GLM: 49\%, RF: 61\%, and ANN: 63\%) and LOAO (GLM: 52\%, RF: 57\%, and ANN: 57\%). With a larger dataset (i.e., more animals and grazing management scenarios), it is expected that accuracy could be increased. Most importantly, the greater prediction accuracy observed for holdout CV may simply indicate a lack of data independence and the presence of carry-over effects from animals and grazing management. Our results suggest that generalizing predictive models to unknown (not used for training) animals or grazing management may incur poor prediction quality. The results highlight the need for using management knowledge to define the validation strategy that is closer to the real-life situation, i.e., the intended application of the predictive model.},
-          issn = {1525-3163},
-          doi = {10.1093/jas/skab206},
-          url = {https://doi.org/10.1093/jas/skab206},
-          eprint = {https://academic.oup.com/jas/article-pdf/99/9/skab206/40307064/skab206.pdf},}
-        }`
-          },
-      ],
-      projects: [
-        {
-          title: "Pré-Uni projeto de extensão de ensino UFLA (2014-2017)",
-          description: "O PRÉ-UNI – Programa de Apoio Pré-Universitário é um cursinho pré-vestibular gratuito, em parceria com a Prefeitura Municipal de Lavras que dá a oportunidade aos alunos de escolas públicas, oriundos de famílias com vulnerabilidade socioeconômica. Entre 2014-2017 minitrei aulas de Geografia & História, Biologia no programa.",
-          tags: ["Pré-Uni", "ENEM"],
-          link: "https://proeec.ufla.br/pre-uni"
-        },
-        {
-          title: "Programa Institucional de Bolsa de Ensino e Aprendizagem (2014)",
-          description: "O Programa de mentoria para calouros da Universidade Federal de Lavras, PROMEC, tem como objetivos: Identificar as dificuldades encontradas pelos ingressantes em seu processo de adaptação ao meio universitário, no que concerne: à postura em relação a sua forma de estudar ou de se dedicar às disciplinas; à compreensão e consolidação de conceitos/conteúdos fundamentais para um desenvolvimento satisfatório em seu curso; às relações sociais estabelecidas em seu curso, na instituição ou em sua moradia; às normas da instituição, no reconhecimento dos seus direitos e deveres. O projeto desenvolvia ações que contribuam para a superação das dificuldades diagnosticadas e para a constituição de uma postura mais autônoma dos sujeitos, enquanto estudantes universitários. Com o objetivo de fortalecer o vínculo dos estudantes com o seu curso, evitando transferências e sobretudo, desistências/abandono (evasão).",
-          tags: ["PROMEC", "UFLA"],
-          link: "http://www.dnu.ufla.br/menu-extensao/promec"
-        },
-      ],
-      courses: [
-        {
-          code: ">",
-          title: "Biologia",
-          term: "2014-2015 (Ensino Médio)",
-          description: "Ministração de aulas de biologia no programa de PREUNI-UFLA para a preparação do ENEM."
-        },
-        {
-          code: ">",
-          title: "Geografia & História",
-          term: "2016-2017 (Ensino Médio)",
-          description: "Ministração de aulas de geografia e história no programa de PREUNI-UFLA para a preparação do ENEM."
-        },
-      ],
-      news: [
-        /*{
-          date: "Outubro 2026",
-          text: "Selecionado como Area Chair para o NeurIPS 2026."
-        }*/
-      ]
-    };
-
-    // ================= TAB SWITCHING LOGIC =================
-    function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-      const target = document.getElementById(`tab-${tabId}`);
-      if (target) target.classList.add('active');
-
-      document.querySelectorAll('.nav-tab').forEach(btn => {
-        if (btn.dataset.tab === tabId) {
-          btn.className = "nav-tab active px-3 py-2 rounded-md text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 transition font-medium";
-        } else {
-          btn.className = "nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition font-medium";
-        }
-      });
-
-      document.getElementById('mobile-menu').classList.add('hidden');
-    }
-
-    // ================= RENDER FUNCTIONS =================
-    function renderPublications(filtered = portfolioData.publications) {
-      const list = document.getElementById('publications-list');
-      if (!list) return;
-
-      if (filtered.length === 0) {
-        list.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">Nenhuma publicação encontrada.</p>`;
-        return;
-      }
-
-      list.innerHTML = filtered.map(pub => `
-        <div class="p-4 rounded-xl border border-slate-100 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition bg-slate-50/50 dark:bg-slate-800/30">
-          <div class="flex items-start justify-between gap-3">
-            <h3 class="text-sm font-bold text-slate-900 dark:text-white leading-snug">
-              ${pub.title}
-            </h3>
-            <span class="shrink-0 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">${pub.category}</span>
-          </div>
-
-          <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">${pub.authors}</p>
-          <p class="text-xs font-semibold text-brand-600 dark:text-brand-400 mt-1"><em>${pub.venue}</em> (${pub.year})</p>
-
-          <div class="mt-3 flex items-center justify-between text-xs pt-2 border-t border-slate-200/50 dark:border-slate-700/50">
-            <div class="flex items-center gap-3">
-              <a href="${pub.pdfUrl}" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1 font-medium"><i class="fa-regular fa-file-pdf text-rose-500"></i> PDF</a>
-              <a href="${pub.doi}" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1 font-medium"><i class="doi-text-icon fa-doi text-slate-700 dark:text-slate-300"></i> DOI</a>
-              <a href="${pub.codeUrl}" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1 font-medium"><i class="fa-brands fa-github text-slate-700 dark:text-slate-300"></i> Código</a>
-              <button onclick="openBibtexModal(${pub.id})" class="text-slate-600 dark:text-slate-300 hover:text-brand-600 flex items-center gap-1 font-medium"><i class="fa-solid fa-quote-left text-amber-500"></i> BibTeX</button>
-            </div>
-            <span class="text-[11px] font-semibold text-slate-400 bg-slate-200/60 dark:bg-slate-700/60 px-2 py-0.5 rounded">${pub.citations} Citações</span>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function renderProjects() {
-      const grid = document.getElementById('projects-grid');
-      if (!grid) return;
-      grid.innerHTML = portfolioData.projects.map(proj => `
-        <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition flex flex-col justify-between">
-          <div>
-            <h3 class="font-bold text-base text-slate-900 dark:text-white mb-2">${proj.title}</h3>
-            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-4">${proj.description}</p>
-          </div>
-          <div>
-            <div class="flex flex-wrap gap-1.5 mb-3">
-              ${proj.tags.map(t => `<span class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded text-[10px] font-medium">${t}</span>`).join('')}
-            </div>
-            <a href="${proj.link}" target="_blank" class="inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:underline">Ver Repositório <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function renderCourses() {
-      const list = document.getElementById('courses-list');
-      if (!list) return;
-      list.innerHTML = portfolioData.courses.map(c => `
-        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40">
-          <div class="flex items-center justify-between mb-1">
-            <span class="font-bold text-xs bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 px-2 py-0.5 rounded">${c.code}</span>
-            <span class="text-[11px] text-slate-400 font-medium">${c.term}</span>
-          </div>
-          <h3 class="font-bold text-sm text-slate-900 dark:text-white mt-1">${c.title}</h3>
-          <p class="text-xs text-slate-600 dark:text-slate-400 mt-1">${c.description}</p>
-        </div>
-      `).join('');
-    }
-
-    function renderNews() {
-      const timeline = document.getElementById('news-timeline');
-      if (!timeline) return;
-      timeline.innerHTML = portfolioData.news.map(n => `
-        <div class="flex items-start gap-4">
-          <span class="shrink-0 text-[11px] font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-md">${n.date}</span>
-          <p class="text-xs text-slate-700 dark:text-slate-300 pt-0.5 leading-relaxed">${n.text}</p>
-        </div>
-      `).join('');
-    }
-
-    // ================= BIBTEX MODAL =================
-    function openBibtexModal(pubId) {
-      const pub = portfolioData.publications.find(p => p.id === pubId);
-      if (pub) {
-        document.getElementById('bibtex-content').innerText = pub.bibtex;
-        document.getElementById('bibtex-modal').classList.remove('hidden');
-      }
-    }
-
-    function closeBibtexModal() {
-      document.getElementById('bibtex-modal').classList.add('hidden');
-    }
-
-    function copyBibtexText() {
-      const text = document.getElementById('bibtex-content').innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        alert('BibTeX copiado para a área de transferência!');
-      });
-    }
-
-    // ================= CONTACT FORM HANDLER =================
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      const alertBox = document.getElementById('contact-alert');
-      if (alertBox) {
-        alertBox.className = "p-3 rounded-lg text-xs font-medium text-center bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-200 block";
-        alertBox.innerText = "Mensagem enviada com sucesso! Responderemos em breve.";
-      }
-      document.getElementById('contact-form').reset();
-    }
-
-    // ================= AUTOMATIC LAST UPDATED DATE =================
-    function setLastUpdatedDate() {
-      const lastUpdatedElement = document.getElementById('last-updated');
-      if (lastUpdatedElement) {
-        const lastModified = new Date(document.lastModified);
-        const formattedDate = lastModified.toLocaleDateString('pt-BR', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
-        });
-        lastUpdatedElement.textContent = formattedDate;
-      }
-    }
-
-    // ================= EVENT LISTENERS & INIT =================
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('theme-toggle')?.addEventListener('click', () => {
-        document.documentElement.classList.toggle('dark');
-      });
-
-      document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
-        document.getElementById('mobile-menu')?.classList.toggle('hidden');
-      });
-
-      renderPublications();
-      renderProjects();
-      renderCourses();
-      renderNews();
-      setLastUpdatedDate();
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

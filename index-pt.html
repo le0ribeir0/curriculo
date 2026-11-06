@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leonardo A. Coelho Ribeiro | Portfólio Acadêmico e Pesquisas</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f0f7ff', 100: '#e0effe', 500: '#0284c7', 600: '#0369a1', 700: '#035480', 900: '#0c2a4a' },
+            academic: { navy: '#0f172a', gold: '#d97706', slate: '#475569' }
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'], serif: ['Merriweather', 'Georgia', 'serif'], mono: ['Fira Code', 'monospace'] }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans min-h-screen transition-colors duration-200">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+            <i class="fa-solid fa-bars text-xl"></i>
+          </button>
+        </div>
+
+        <nav class="hidden md:flex space-x-1 lg:space-x-2 text-sm font-medium">
+          <button onclick="switchTab('about')" class="nav-tab active px-3 py-2 rounded-md text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-slate-800 transition" data-tab="about"><i class="fa-regular fa-user mr-1.5"></i>Sobre</button>
+          <button onclick="switchTab('publications')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="publications"><i class="fa-solid fa-book mr-1.5"></i>Publicações</button>
+          <button onclick="switchTab('projects')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="projects"><i class="fa-solid fa-flask mr-1.5"></i>Pesquisa e Projetos</button>
+          <button onclick="switchTab('teaching')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="teaching"><i class="fa-solid fa-chalkboard-user mr-1.5"></i>Ensino</button>
+          <button onclick="switchTab('news')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="news"><i class="fa-regular fa-newspaper mr-1.5"></i>Carreira</button>
+          <button onclick="switchTab('contact')" class="nav-tab px-3 py-2 rounded-md text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-brand-400 transition" data-tab="contact"><i class="fa-regular fa-envelope mr-1.5"></i>Contato</button>
+        </nav>
+
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <div class="flex items-center space-x-2 sm:space-x-3">
+            <a href="index.html" class="px-2.5 py-1 text-xs font-semibold rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 transition">EN</a>
+          </div>
+          <div class="flex items-center space-x-2 sm:space-x-3">
+            <a href="index-es.html" class="px-2.5 py-1 text-xs font-semibold rounded bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 transition">ES</a>
+            <button id="theme-toggle" class="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+              <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+              <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-1">
+      <button onclick="switchTab('about')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-regular fa-user mr-2"></i>Sobre</button>
+      <button onclick="switchTab('publications')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-solid fa-book mr-2"></i>Publicações</button>
+      <button onclick="switchTab('projects')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-solid fa-flask mr-2"></i>Pesquisa e Projetos</button>
+      <button onclick="switchTab('teaching')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-solid fa-chalkboard-user mr-2"></i>Ensino</button>
+      <button onclick="switchTab('news')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-regular fa-newspaper mr-2"></i>Carreira</button>
+      <button onclick="switchTab('contact')" class="mobile-nav-tab block w-full text-left px-3 py-2 rounded-md text-slate-700 dark:text-slate-200"><i class="fa-regular fa-envelope mr-2"></i>Contatos</button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+      <!-- Left Sidebar -->
+      <aside class="lg:col-span-4">
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm sticky top-24">
+          <div class="text-center">
+            <div class="relative inline-block mb-4">
+              <img src="https://lh3.googleusercontent.com/a/ACg8ocJRexBJX5I0gfCIaslctHx05RGyVGQvTfNWiFFgvmtAZMaNHhlW=s288-c-no" 
+                   alt="Leonardo Profile Picture" 
+                   class="w-36 h-36 sm:w-44 sm:h-44 rounded-full object-cover border-4 border-white dark:border-slate-800 shadow-md mx-auto">
+            </div>
+            <h1 class="text-2xl font-serif font-bold text-slate-900 dark:text-white">Leonardo A. Coelho Ribeiro</h1>
+            <p class="text-brand-600 dark:text-brand-400 font-medium text-sm mt-1">Chefe Controladoria - Grupo Umuarama</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-2">MSc. Animal Science | University of Wisconsin-Madison, EUA</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Mestre em Produção e Nutrição de Ruminantes - Zootecnia | UFLA</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Médico Veterinário - CRMV/MG 18618 | UFLA</p>
+            <p class="text-slate-500 dark:text-slate-400 text-xs mt-1">Cientista de Dados (Graduação em andamento) | IFMT</p> 
+            <div class="flex items-center justify-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mt-3">
+              <i class="fa-solid fa-location-dot text-rose-500"></i>
+              <span>Cuiabá, Mato Grosso, Brasil</span>
+            </div>
+          </div>
+
+          <!-- Academic Links / Badges -->
+          <div class="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800 flex flex-wrap gap-2 justify-center">
+            <a href="https://scholar.google.com/citations?user=MyKSsPQAAAAJ&hl=en" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+              <i class="fa-solid fa-graduation-cap text-sky-600"></i> Scholar
+            </a>
+            <a href="https://orcid.org/0000-0002-2804-8052" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+              <i class="fa-brands fa-orcid text-emerald-600"></i> ORCID
+            </a>
+            <a href="https://github.com/le0ribeir0" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/leonardo-ribeiro0/" target="_blank" class="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-medium rounded-lg transition flex items-center gap-1.5">
+              <i class="fa-brands fa-linkedin text-blue-600"></i> LinkedIn
+            </a>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-6 space-y-2">
+            <button onclick="switchTab('contact')" class="w-full flex items-center justify-center gap-2 py-2.5 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium text-sm rounded-xl transition">
+              <i class="fa-regular fa-paper-plane"></i> Entre em contato
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Content Panels -->
+      <section class="lg:col-span-8 space-y-8">
+        <!-- SOBRE -->
+        <div id="tab-about" class="tab-content active space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-sm">
+            <h2 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-chevron-right text-brand-600 text-xl"></i> Sobre mim
+            </h2>
+            <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-4 leading-relaxed">
+              <p>👋 Olá! Sou um pesquisador brasileiro e médico veterinário. Com mestrado em zootecnia, minha trajetória se resume em desenvolvimento e inovações para a agropecuária.</p>
+              <p>Minhas pesquisas concentram-se na aplicação de modelos preditivos e machine learning. Cheguei a publicar artigos relevantes nessa área.</p>
+              <p>Valorizo o ensino, tanto em sala de aula quanto na mentoria de estudantes. Lecionei algumas disciplinas em diversos níveis, abrangendo o ensino técnico, médio e a graduação.</p>
+              <p>Atualmente sou chefe da controladoria do Grupo Umuarama em Cuiabá/MT. Em 2026 tomei a iniciativa de cursar uma segunda graduação em Ciência de Dados e Inteligência Artificial no Instituto Federal de Mato Grosso (IFMT).</p>
+              <p>No meu tempo livre adoro pescar! A calma, paciência e relaxamento de uma pescaria me fazem pensar em soluções aos desafios de análise de dados.</p>
+              <p>☕️ Nas pequenas pausas diárias, adoro saborear um bom café ou cappuccino!</p>
+            </div>
+          </div>
+
+          <!-- Research Interests Tags -->
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Principais Interesses</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Deep Learning</span>
+              <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Machine Learning</span>
+              <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Data Science</span>
+              <span class="px-3 py-1 bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-slate-300 rounded-full text-xs font-medium border border-brand-100 dark:border-slate-700">Precision Livestock</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PUBLICAÇÕES -->
+        <div id="tab-publications" class="tab-content space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-4">Publicações</h2>
+            <div id="publications-list" class="space-y-6"></div>
+          </div>
+        </div>
+
+        <!-- PROJETOS -->
+        <div id="tab-projects" class="tab-content space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Pesquisa e Projetos</h2>
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6"></div>
+          </div>
+        </div>
+
+        <!-- ENSINO -->
+        <div id="tab-teaching" class="tab-content space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Ensino</h2>
+            <div id="courses-list" class="space-y-4 mt-6"></div>
+          </div>
+        </div>
+
+        <!-- CARREIRA -->
+        <div id="tab-news" class="tab-content space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Carreira</h2>
+            <div id="news-timeline" class="space-y-6 mt-6"></div>
+          </div>
+        </div>
+
+        <!-- CONTATO -->
+        <div id="tab-contact" class="tab-content space-y-6">
+          <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+            <h2 class="text-xl font-serif font-bold text-slate-900 dark:text-white mb-2">Contato</h2>
+            <p class="text-xs text-slate-500 mb-6">Fique à vontade para enviar uma mensagem ou agendar um horário.</p>
+            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Seu Nome</label>
+                <input type="text" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border rounded-lg">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Seu E-mail</label>
+                <input type="email" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border rounded-lg">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1">Mensagem</label>
+                <textarea rows="3" required class="w-full px-3 py-2 text-xs bg-slate-50 dark:bg-slate-800 border rounded-lg"></textarea>
+              </div>
+              <button type="submit" class="w-full py-2.5 px-4 bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs rounded-lg transition">Enviar Mensagem</button>
+              <div id="contact-alert" class="hidden p-3 rounded-lg text-xs font-medium text-center"></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500">
+      <p>© 2026 Leonardo A. C. Ribeiro | Última atualização: <span id="last-updated" class="font-medium text-slate-700 dark:text-slate-300"></span></p>
+    </div>
+  </footer>
+
+  <!-- BIBTEX MODAL -->
+  <div id="bibtex-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-xl w-full border p-6 shadow-2xl">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-serif font-bold text-base text-slate-900 dark:text-white">Citação BibTeX</h3>
+        <button onclick="closeBibtexModal()" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+      <pre id="bibtex-content" class="bg-slate-950 text-emerald-400 p-4 rounded-xl font-mono text-xs overflow-x-auto"></pre>
+      <div class="mt-4 flex justify-end">
+        <button onclick="copyBibtexText()" class="px-4 py-2 bg-brand-600 text-white rounded-lg text-xs font-semibold">Copiar BibTeX</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
