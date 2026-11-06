@@ -41,7 +41,7 @@ My work and studies center on revolutionizing livestock production systems and c
 <table>
   <tr>
     <td align="center" width="120">
-      <img src="https://githubusercontent.com" width="40" height="40" alt="Python" />
+      <img src="https://shields.io" width="40" height="40" alt="Python" />
       <br /><sub><b>Python</b></sub>
     </td>
     <td align="center" width="120">
