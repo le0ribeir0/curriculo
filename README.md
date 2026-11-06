@@ -70,6 +70,7 @@ My work and studies center on revolutionizing livestock production systems and c
 
 <p align="left">
   <img src="https://github-stats-extended.vercel.app/api?username=le0ribeir0&show_icons=true&theme=transparent" alt="Leonardo's GitHub Stats" height="160px" />
+  &nbsp;&nbsp;
   <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=le0ribeir0&layout=compact&theme=transparent" alt="Top Languages" height="160px" />
 </p>
 
