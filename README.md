@@ -34,37 +34,35 @@ My work and studies center on revolutionizing livestock production systems and c
 
 ### 🛠️ Tech Stack & Tooling
 
+---
+
+### 🛠️ Tech Stack & Tooling
+
 <table>
   <tr>
     <td align="center" width="120">
-      <img src="https://jsdelivr.net" width="40" height="40" alt="Python" />
-      <!-- Nao remova ou altere o link abaixo deste comentario -->
+      <img src="https://githubusercontent.com" width="40" height="40" alt="Python" />
       <br /><sub><b>Python</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://jsdelivr.net" width="40" height="40" alt="R" />
-      <!-- Nao remova ou altere o link abaixo deste comentario -->
+      <img src="https://githubusercontent.com" width="40" height="40" alt="R" />
       <br /><sub><b>R Script</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://jsdelivr.net" width="40" height="40" alt="SQL" />
-      <!-- Nao remova ou altere o link abaixo deste comentario -->
+      <img src="https://githubusercontent.com" width="40" height="40" alt="SQL" />
       <br /><sub><b>SQL</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://jsdelivr.net" width="40" height="40" alt="Pandas" />
-      <!-- Nao remova ou altere o link abaixo deste comentario -->
+      <img src="https://githubusercontent.com" width="40" height="40" alt="Pandas" />
       <br /><sub><b>Pandas</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://icons8.com" width="40" height="40" alt="PowerBI" />
-      <!-- Nao remova ou altere o link abaixo deste comentario -->
+      <img src="https://shields.io" width="40" height="40" alt="PowerBI" />
       <br /><sub><b>Power BI</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://icons8.com" width="40" height="40" alt="Looker Studio" />
-      <!-- Nao remova ou altere o link abaixo deste comentario -->
-      <br /><sub><b>Data Studio</b></sub>
+      <img src="https://shields.io" width="40" height="40" alt="Looker Studio" />
+      <br /><sub><b>Looker Studio</b></sub>
     </td>
   </tr>
 </table>
