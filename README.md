@@ -1,4 +1,4 @@
-# Hi there, I'm Leonardo Ribeiro! 👋
+# Hi there, I'm Leonardo Coelho Ribeiro! 👋
 
 <p align="left">
   <a href="https://www.linkedin.com/in/leonardo-ribeiro0/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
