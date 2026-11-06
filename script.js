@@ -37,7 +37,7 @@ const portfolioData = {
       codeUrl: "#",
       bibtex: `@ARTICLE{Ribeiro2025-ut,
         title     = "Near-infrared spectroscopy analysis to predict urinary allantoin in dairy cows",
-        author    = "Ribeiro, Leonardo A C and Menezes, Guilherme L and Bresolin, Tiago and Arriola Apelo, Sebastian I and D{\'o}rea, Joao R R", 
+        author    = "Ribeiro, Leonardo A C and Menezes, Guilherme L and Bresolin, Tiago and Arriola Apelo, Sebastian I and D{'o}rea, Joao R R", 
         journal   = "JDS Commun.",
         publisher = "American Dairy Science Association",
         volume    =  6,
