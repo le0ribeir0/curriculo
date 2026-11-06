@@ -44,10 +44,12 @@ My work and studies center on revolutionizing livestock production systems and c
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/r/r-original.svg" width="40" height="40" alt="R" />
       <br /><sub><b>R Script</b></sub>
     </td>
+    <!---
     <td align="center" width="120">
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" width="40" height="40" alt="SQL" />
       <br /><sub><b>SQL</b></sub>
     </td>
+    -->
     <td align="center" width="120">
       <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" width="40" height="40" alt="Pandas" />
       <br /><sub><b>Pandas</b></sub>
@@ -58,7 +60,7 @@ My work and studies center on revolutionizing livestock production systems and c
     </td>
     <td align="center" width="120">
       <img src="https://www.vectorlogo.zone/logos/google_looker/google_looker-icon.svg" width="40" height="40" alt="Looker Studio" />
-      <br /><sub><b>Looker Studio</b></sub>
+      <br /><sub><b>Data Studio</b></sub>
     </td>
   </tr>
 
