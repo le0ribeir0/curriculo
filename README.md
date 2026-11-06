@@ -1,9 +1,9 @@
 # Hi there, I'm Leonardo Ribeiro! 👋
 
 <p align="left">
-  <a href="https://linkedin.com"><img src="https://shields.io" alt="LinkedIn"></a>
-  <a href="https://orcid.org"><img src="https://shields.io" alt="ORCID"></a>
-  <a href="https://le0ribeir0.github.io/curriculo/index.html"><img src="https://shields.io" alt="Portfolio"></a>
+  <a href="https://www.linkedin.com/in/leonardo-ribeiro0/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="https://orcid.org/0000-0002-2804-8052" target="_blank"><img src="https://img.shields.io/badge/ORCID-A6CE39?style=for-the-badge&logo=orcid&logoColor=white" alt="ORCID"></a>
+  <a href="https://le0ribeir0.github.io/curriculo/index.html" target="_blank"><img src="https://img.shields.io/badge/Portfolio-0284c7?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Portfolio"></a>
 </p>
 
 I am a Brazilian researcher, veterinarian, and data professional bridging the gap between **Agribusiness, Corporate Governance, and Advanced Analytics**. My expertise lies in turning complex biological and financial data into actionable machine learning models and robust data governance structures.
@@ -34,46 +34,41 @@ My work and studies center on revolutionizing livestock production systems and c
 
 ### 🛠️ Tech Stack & Tooling
 
----
-
-### 🛠️ Tech Stack & Tooling
-
 <table>
   <tr>
     <td align="center" width="120">
-      <img src="https://shields.io" width="40" height="40" alt="Python" />
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="40" height="40" alt="Python" />
       <br /><sub><b>Python</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://githubusercontent.com" width="40" height="40" alt="R" />
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/r/r-original.svg" width="40" height="40" alt="R" />
       <br /><sub><b>R Script</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://githubusercontent.com" width="40" height="40" alt="SQL" />
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" width="40" height="40" alt="SQL" />
       <br /><sub><b>SQL</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://githubusercontent.com" width="40" height="40" alt="Pandas" />
+      <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" width="40" height="40" alt="Pandas" />
       <br /><sub><b>Pandas</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://shields.io" width="40" height="40" alt="PowerBI" />
+      <img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" width="40" height="40" alt="PowerBI" />
       <br /><sub><b>Power BI</b></sub>
     </td>
     <td align="center" width="120">
-      <img src="https://shields.io" width="40" height="40" alt="Looker Studio" />
+      <img src="https://www.vectorlogo.zone/logos/google_looker/google_looker-icon.svg" width="40" height="40" alt="Looker Studio" />
       <br /><sub><b>Looker Studio</b></sub>
     </td>
   </tr>
-</table>
 
 ---
 
 ### 📈 GitHub Stats
 
 <p align="left">
-  <img src="https://vercel.app" alt="Leonardo's GitHub Stats" height="160px" />
-  <img src="https://vercel.app" alt="Top Languages" height="160px" />
+  <img src="https://github-readme-stats.vercel.app/api?username=le0ribeir0&show_icons=true&theme=transparent" alt="Leonardo's GitHub Stats" height="160px" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=le0ribeir0&layout=compact&theme=transparent" alt="Top Languages" height="160px" />
 </p>
 
 ---
