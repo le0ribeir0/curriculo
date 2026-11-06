@@ -12,12 +12,12 @@ I am a Brazilian researcher, veterinarian, and data professional bridging the ga
 
 ### 🧬 About Me
 
-- 📊 **Current Role:** Head of Financial Controlling & Data Governance at *Umuarama Group* (Cuiabá, MT, Brazil).
-- 🎓 **Education in Tech:** B.Tech in Data Science & Artificial Intelligence (*In progress*) at the *Federal Institute of Mato Grosso (IFMT)*.
+- 📊 **Current Role:** Head of Financial Controlling & Data Governance at *Umuarama Group* (Cuiabá, MT, Brazil)
+- 🎓 **Education in Tech:** B.Tech in Data Science & Artificial Intelligence (*In progress*) at the *Federal Institute of Mato Grosso (IFMT)*
 - 🔬 **Academic Background:** 
-  - MSc. in Animal Science from the *University of Wisconsin-Madison, USA* (focusing on predicted diseases on dairy cows in early lactation).
-  - MSc. in Ruminant Production and Nutrition from the *Federal University of Lavras (UFLA)*.
-  - B.S. in Veterinary Medicine from *UFLA*.
+  - MSc. in Animal Science from the *University of Wisconsin-Madison, USA* (focusing on predicted diseases on dairy cows in early lactation)
+  - MSc. in Ruminant Production and Nutrition from the *Federal University of Lavras (UFLA)*
+  - B.S. in Veterinary Medicine from *UFLA*
 
 > 💡 *In my free time, I absolutely love fishing! The calm, patience, and relaxation of a fishing trip help me clear my mind and find creative solutions to complex data analysis challenges.* 🎣☕️
 
