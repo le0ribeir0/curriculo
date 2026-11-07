@@ -89,15 +89,15 @@ const portfolioData = {
     courses: [
       {
         code: ">",
-        title: "Biologia",
-        term: "2014-2015 (Ensino Médio)",
-        description: "Aulas de biologia para o ensino médio no programa PREUNI-UFLA focado na preparação para o ENEM."
-      },
-      {
-        code: ">",
         title: "Geografia & História",
         term: "2016-2017 (Ensino Médio)",
         description: "Aulas de geografia e história ministradas no programa PREUNI-UFLA."
+      },
+      {
+        code: ">",
+        title: "Biologia",
+        term: "2014-2015 (Ensino Médio)",
+        description: "Aulas de biologia para o ensino médio no programa PREUNI-UFLA focado na preparação para o ENEM."
       }
     ],
         news: [
@@ -239,15 +239,15 @@ const portfolioData = {
     courses: [
       {
         code: ">",
-        title: "Biología",
-        term: "2014-2015 (Escuela Secundaria)",
-        description: "Clases de biología de escuela secundaria impartidas en el programa PREUNI-UFLA para la preparación del ENEM."
-      },
-      {
-        code: ">",
         title: "Geografía e Historia",
         term: "2016-2017 (Escuela Secundaria)",
         description: "Clases de geografía e historia impartidas en el programa PREUNI-UFLA."
+      },
+      {
+        code: ">",
+        title: "Biología",
+        term: "2014-2015 (Escuela Secundaria)",
+        description: "Clases de biología de escuela secundaria impartidas en el programa PREUNI-UFLA para la preparación del ENEM."
       }
     ],
       news: [
@@ -389,15 +389,15 @@ const portfolioData = {
     courses: [
       {
         code: ">",
-        title: "Biology",
-        term: "2014-2015 (High School)",
-        description: "Taught high school biology classes within the PREUNI-UFLA program for ENEM preparation."
-      },
-      {
-        code: ">",
         title: "Geography & History",
         term: "2016-2017 (High School)",
         description: "Taught geography and history classes within the PREUNI-UFLA program."
+      },
+      {
+        code: ">",
+        title: "Biology",
+        term: "2014-2015 (High School)",
+        description: "Taught high school biology classes within the PREUNI-UFLA program for ENEM preparation."
       }
     ],
     news: [
