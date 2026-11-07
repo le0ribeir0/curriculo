@@ -1,6 +1,8 @@
 // ================= STATIC PORTFOLIO DATA (MULTI-LANGUAGE) =================
 const portfolioData = {
+  
   // PORTUGUES // 
+  
   pt: {
     publications: [
       {
@@ -98,46 +100,46 @@ const portfolioData = {
         description: "Aulas de geografia e história ministradas no programa PREUNI-UFLA."
       }
     ],
-    news: [
+        news: [
       {
         date: "Fev 2025 - Atualmente",
-        text: "<strong>Head de Controladoria - Grupo Umuarama, Cuiabá/MT</strong><br>Liderança da estratégia financeira, orçamentária e de controladoria do grupo, assegurando a integridade e precisão das informações financeiras.<br>Realizando a implementação de políticas de governança de dados e relatórios gerenciais avançados para suporte à tomada de decisão da diretoria executiva.<br>Com a otimização de processos contábeis e financeiros, unindo forte visão analítica (ciência de dados) à gestão de performance corporativa.</br>"
+        text: "<strong>Grupo Umuarama - Cuiabá/MT</strong><br><em>Head de Controladoria</em><br>Liderança da estratégia financeira, orçamentária e de controladoria do grupo, assegurando a integridade e precisão das informações financeiras.<br>Implementação de políticas de governança de dados e relatórios gerenciais avançados para suporte à tomada de decisão da diretoria executiva.<br>Otimização de processos contábeis e financeiros, unindo forte visão analítica (ciência de dados) à gestão de performance corporativa."
       },
       {
         date: "Fev 2024 - Ago 2024",
-        text: "<strong>Agrifatto consultoria</strong> - <a href='http://agrifatto.com.br/' target='_blank' class='text-white'>http://agrifatto.com.br/</a><br>Retorno à empresa para atuar em análises avançadas de mercado bovino, elaboração de relatórios estratégicos para clientes e monitoramento de tendências de commodities.<br>Neste período, pude automatizar os relatórios com a coleta de dados desenvolendo scripts em python para a finalidade.</br>"
+        text: "<strong>Agrifatto Consultoria</strong><br><em>Analista de Mercado</em><br>Retorno à empresa para atuar em análises avançadas de mercado bovino, elaboração de relatórios estratégicos para clientes e monitoramento de tendências de commodities.<br>Desenvolvimento de scripts em Python para automação da coleta de dados e geração de relatórios."
       },
       {
         date: "Ago 2021 - Dez 2023",
-        text: "<strong>Mestrado em Ciência Animal - Universidade de Wisconsin, EUA</strong><br>Período o qual me dediquei aos estudos e desenvolvimento da minha pesquisa</br>"
+        text: "<strong>Universidade de Wisconsin-Madison - EUA</strong><br><em>Mestrado em Ciência Animal</em><br>Período dedicado aos estudos avançados e ao desenvolvimento de pesquisa científica na área de produção animal e análise de dados."
       },
       {
         date: "Out 2020 - Jul 2021",
-        text: "<strong>Rehagro Consultoria</strong> - <a href='https://rehagro.com.br/' target='_blank' class='text-white'>https://rehagro.com.br/</a><br>Empresa sólida de consultoria agroprecuária, no mercado há mais de 20 anos. Em que tive a oportunidade de ingressar como consultor técnico na equipe de gado de corte.</br>Durante o período na empresa pude aprimorar meus conhecimentos de gestão de propriedade rural e poder morar no Mato Grosso.</br>"
+        text: "<strong>Rehagro Consultoria - Mato Grosso</strong><br><em>Consultor Técnico em Gado de Corte</em><br>Atuação em empresa referência em consultoria agropecuária. Aprimoramento prático em gestão de propriedades rurais e consultoria técnica de campo."
       },
       {
         date: "Jan 2018 - Fev 2020",
-        text: "<strong>Mestrado em Zootecnia - UFLA</strong><br>Período o qual me dediquei aos estudos e desenvolvimento da minha pesquisa</br>"
+        text: "<strong>Universidade Federal de Lavras (UFLA)</strong><br><em>Mestrado em Zootecnia</em><br>Dedicação à pesquisa científica em nutrição e produção de ruminantes, com foco em modelagem e análise de dados."
       },
       {
         date: "Abr 2017 - Out 2017",
-        text: "<strong>Agrifatto consultoria</strong> - <a href='http://agrifatto.com.br/' target='_blank' class='text-white'>http://agrifatto.com.br/</a><br>Empresa de consultoria de mercado bovino, no qual tive a oportunidade de contribuir na elaboração dos relatórios aos clientes.</br>"
+        text: "<strong>Agrifatto Consultoria</strong><br><em>Estagiário / Analista de Mercado</em><br>Contribuição direta na análise do mercado pecuário e na elaboração de relatórios estratégicos para clientes."
       },
       {
         date: "Jan 2016 - Fev 2017",
-        text: "<strong>Centro de Inteligência em Mercados - CIM/UFLA</strong> - <a href='http://www.cim.ufla.br/' target='_blank' class='text-white'>http://www.cim.ufla.br/</a><br>Centro dedicado para estudos de mercado no qual pude desenvolver minhas primeiras análises fundamentalistas e meus primeiros passos na análise gráfica, além de realizar as primeiras operaçÕes em simulador de contratos futuros. <br>Neste ambiente, pude comprendeender as varianças do mercado e as oscilações dos preços das commodities</br>"
+        text: "<strong>Centro de Inteligência em Mercados (CIM/UFLA)</strong><br><em>Pesquisador / Analista de Mercado</em><br>Desenvolvimento de análises fundamentalistas e técnicas (análise gráfica), além de operações em simulador de contratos futuros para compreensão da volatilidade de commodities agrícolas."
       },
       {
         date: "Mai 2014 - Jan 2016",
-        text: "<strong>Terra Jr consultoria UFLA</strong> - <a href='https://terrajr.com.br/' target='_blank' class='text-white'>https://terrajr.com.br/</a><br>Empresa júnior de consultoria da UFLA, em que tive a oportunidade de contribuir na reestruturação e de diversas consultorias aos produtores locais.</br>"
+        text: "<strong>Terra Jr. Consultoria - UFLA</strong><br><em>Consultor / Gestor</em><br>Atuação em empresa júnior de consultoria agronômica e zootécnica, contribuindo na reestruturação interna e prestando consultoria a produtores rurais regionais."
       },
       {
         date: "Abr 2012 - Jun 2014",
-        text: "<strong>Grupo de Estudos em Genética e Melhoramento Animal</strong> <br>Grupo de estudo do departamento de zootecnia da UFLA no qual fui membro e coordernador de tecnologia. <br> Grupo sob supervisão da Profa. Sarah Laguna Conceição Meirelle"
+        text: "<strong>Grupo de Estudos em Genética e Melhoramento Animal (UFLA)</strong><br><em>Coordenador de Tecnologia e Membro</em><br>Grupo de estudos do Departamento de Zootecnia sob supervisão da Profa. Sarah Laguna Conceição Meirelles."
       },
-     {
+      {
         date: "Abr 2010 - Dez 2010",
-        text: "<strong>Clinica Veterinária e Pet Shop Paraná - Goiânia/GO</strong> <br>Local onde tive o meu primeiro contato com a clinica veterinária de pequenos animais"
+        text: "<strong>Clínica Veterinária e Pet Shop Paraná - Goiânia/GO</strong><br><em>Estagiário / Auxiliar Técnico</em><br>Primeiro contato prático com a rotina e procedimentos da clínica veterinária de pequenos animais."
       }
     ],
     ui: {
@@ -150,6 +152,7 @@ const portfolioData = {
   },
 
   // ESPANOL // 
+
   es: {
     publications: [
       {
@@ -247,12 +250,48 @@ const portfolioData = {
         description: "Clases de geografía e historia impartidas en el programa PREUNI-UFLA."
       }
     ],
-    news: [
+      news: [
       {
-        date: "Octubre 2026",
-        text: "Seleccionado como Area Chair para NeurIPS 2026."
+        date: "Feb 2025 - Actualidad",
+        text: "<strong>Grupo Umuarama - Cuiabá/MT, Brasil</strong><br><em>Jefe de Controlaría (Head of Controlling)</em><br>Liderazgo de la estrategia financiera, presupuestaria y de controlaría del grupo, asegurando la integridad y precisión de la información financiera.<br>Implementación de políticas de gobernanza de datos y tableros de gestión avanzada para el apoyo en la toma de decisiones de la junta ejecutiva.<br>Optimización de procesos contables y financieros, integrando la ciencia de datos a la gestión del rendimiento corporativo."
+      },
+      {
+        date: "Feb 2024 - Ago 2024",
+        text: "<strong>Agrifatto Consultoria</strong><br><em>Analista de Mercado</em><br>Retorno a la empresa para realizar análisis avanzados del mercado ganadero, elaboración de informes estratégicos para clientes y seguimiento de tendencias en commodities.<br>Desarrollo de scripts en Python para automatizar la recolección de datos y generación de reportes."
+      },
+      {
+        date: "Ago 2021 - Dic 2023",
+        text: "<strong>Universidad de Wisconsin-Madison - EE. UU.</strong><br><em>Maestría en Ciencia Animal (M.Sc.)</em><br>Período dedicado a estudios avanzados y desarrollo de investigación científica en producción animal y análisis de datos."
+      },
+      {
+        date: "Oct 2020 - Jul 2021",
+        text: "<strong>Rehagro Consultoria - Mato Grosso, Brasil</strong><br><em>Consultor Técnico en Ganado de Corte</em><br>Actuación en empresa líder en consultoría agropecuaria. Fortalecimiento práctico en gestión de fincas ganaderas y asesoramiento técnico de campo."
+      },
+      {
+        date: "Ene 2018 - Feb 2020",
+        text: "<strong>Universidad Federal de Lavras (UFLA) - Brasil</strong><br><em>Maestría en Zootecnia (M.Sc.)</em><br>Dedicación a la investigación científica en nutrición y producción de rumiantes, con énfasis en modelado y análisis de datos."
+      },
+      {
+        date: "Abr 2017 - Oct 2017",
+        text: "<strong>Agrifatto Consultoria</strong><br><em>Pasante Consultor / Analista de Mercado</em><br>Contribución directa en el análisis del mercado ganadero y en la elaboración de informes estratégicos para clientes."
+      },
+      {
+        date: "Ene 2016 - Feb 2017",
+        text: "<strong>Centro de Inteligencia de Mercados (CIM/UFLA)</strong><br><em>Analista de Mercado / Investigador</em><br>Desarrollo de análisis fundamentalista y técnico (análisis gráfico), además de operaciones en simuladores de contratos de futuros para comprender la volatilidad de los precios de las commodities."
+      },
+      {
+        date: "May 2014 - Ene 2016",
+        text: "<strong>Terra Jr. Consultoría - UFLA</strong><br><em>Consultor / Gestor</em><br>Empresa júnior de consultoría agronómica y zootécnica, contribuyendo en la reestructuración interna y brindando servicios de consultoría a productores locales."
+      },
+      {
+        date: "Abr 2012 - Jun 2014",
+        text: "<strong>Grupo de Estudios en Genética y Mejoramiento Animal (UFLA)</strong><br><em>Coordinador de Tecnología y Miembro</em><br>Grupo de estudios del Departamento de Zootecnia bajo la supervisión de la Profa. Sarah Laguna Conceição Meirelles."
+      },
+      {
+        date: "Abr 2010 - Dic 2010",
+        text: "<strong>Clínica Veterinaria y Pet Shop Paraná - Goiânia/GO, Brasil</strong><br><em>Pasante Técnico</em><br>Primer contacto práctico con la rutina y procedimientos clínicos de medicina veterinaria en pequeñas especies."
       }
-    ],
+      ],
     ui: {
       noPubs: "No se encontraron publicaciones.",
       citations: "Citas",
@@ -263,6 +302,7 @@ const portfolioData = {
   },
 
   // ENGLISH // 
+
   en: {
     publications: [
       {
@@ -360,10 +400,46 @@ const portfolioData = {
         description: "Taught geography and history classes within the PREUNI-UFLA program."
       }
     ],
-    news: [ // ENGLISH // 
+    news: [
       {
-        date: "October 2026",
-        text: "Selected as Area Chair for NeurIPS 2026."
+        date: "Feb 2025 - Present",
+        text: "<strong>Grupo Umuarama - Cuiabá/MT, Brazil</strong><br><em>Head of Financial Controlling</em><br>Leading financial strategy, budgeting, and corporate controlling, ensuring the integrity and accuracy of financial operations.<br>Implementing data governance policies and advanced management dashboards to support executive board decision-making.<br>Optimizing accounting and financial processes by bridging data science methodologies with corporate performance management."
+      },
+      {
+        date: "Feb 2024 - Aug 2024",
+        text: "<strong>Agrifatto Consultoria</strong><br><em>Market Analyst</em><br>Returned to the company to perform advanced cattle market analysis, prepare strategic reports for clients, and track commodity market trends.<br>Developed Python scripts to automate data collection pipelines and report generation."
+      },
+      {
+        date: "Aug 2021 - Dec 2023",
+        text: "<strong>University of Wisconsin-Madison - USA</strong><br><em>M.Sc. in Animal Science</em><br>Dedicated to advanced coursework and scientific research focusing on livestock production and data analysis."
+      },
+      {
+        date: "Oct 2020 - Jul 2021",
+        text: "<strong>Rehagro Consultoria - Mato Grosso, Brazil</strong><br><em>Beef Cattle Technical Consultant</em><br>Worked with a leading agricultural consulting firm, enhancing hands-on expertise in farm management and technical field advising."
+      },
+      {
+        date: "Jan 2018 - Feb 2020",
+        text: "<strong>Federal University of Lavras (UFLA) - Brazil</strong><br><em>M.Sc. in Animal Science (Zootecnia)</em><br>Focused on scientific research in ruminant nutrition and production, leveraging predictive modeling and data analysis."
+      },
+      {
+        date: "Apr 2017 - Oct 2017",
+        text: "<strong>Agrifatto Consultoria</strong><br><em>Intern Market Consultant / Analyst</em><br>Contributed directly to livestock market research and the elaboration of strategic intelligence reports for clients."
+      },
+      {
+        date: "Jan 2016 - Feb 2017",
+        text: "<strong>Market Intelligence Center (CIM/UFLA)</strong><br><em>Market Research Analyst</em><br>Conducted fundamental and technical analysis (chart analysis) and practiced futures contract simulation to understand commodity market volatility and price dynamics."
+      },
+      {
+        date: "May 2014 - Jan 2016",
+        text: "<strong>Terra Jr. Consulting - UFLA</strong><br><em>Consultant / Manager</em><br>Engaged in student-run agricultural consulting firm, assisting in internal restructuring and providing advisory services to local farmers."
+      },
+      {
+        date: "Apr 2012 - Jun 2014",
+        text: "<strong>Animal Genetics & Breeding Study Group (UFLA)</strong><br><em>Technology Coordinator & Member</em><br>Academic research group at the Department of Animal Science, supervised by Prof. Sarah Laguna Conceição Meirelles."
+      },
+      {
+        date: "Apr 2010 - Dec 2010",
+        text: "<strong>Paraná Veterinary Clinic & Pet Shop - Goiânia/GO, Brazil</strong><br><em>Technical Intern</em><br>Initial practical experience in small animal veterinary clinical procedures and care."
       }
     ],
     ui: {
