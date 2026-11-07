@@ -100,16 +100,44 @@ const portfolioData = {
     ],
     news: [
       {
+        date: "Fev 2025 - Atualmente",
+        text: "<strong>Head de Controladoria - Grupo Umuarama, Cuiabá/MT</strong><br>Liderança da estratégia financeira, orçamentária e de controladoria do grupo, assegurando a integridade e precisão das informações financeiras.<br>Realizando a implementação de políticas de governança de dados e relatórios gerenciais avançados para suporte à tomada de decisão da diretoria executiva.<br>Com a otimização de processos contábeis e financeiros, unindo forte visão analítica (ciência de dados) à gestão de performance corporativa.</br>"
+      },
+      {
+        date: "Fev 2024 - Ago 2024",
+        text: "<strong>Agrifatto consultoria</strong> - <a href='http://agrifatto.com.br/' target='_blank' class='text-white'>http://agrifatto.com.br/</a><br>Retorno à empresa para atuar em análises avançadas de mercado bovino, elaboração de relatórios estratégicos para clientes e monitoramento de tendências de commodities.<br>Neste período, pude automatizar os relatórios com a coleta de dados desenvolendo scripts em python para a finalidade.</br>"
+      },
+      {
+        date: "Ago 2021 - Dez 2023",
+        text: "<strong>Mestrado em Ciência Animal - Universidade de Wisconsin, EUA</strong><br>Período o qual me dediquei aos estudos e desenvolvimento da minha pesquisa</br>"
+      },
+      {
+        date: "Out 2020 - Jul 2021",
+        text: "<strong>Rehagro Consultoria</strong> - <a href='https://rehagro.com.br/' target='_blank' class='text-white'>https://rehagro.com.br/</a><br>Empresa sólida de consultoria agroprecuária, no mercado há mais de 20 anos. Em que tive a oportunidade de ingressar como consultor técnico na equipe de gado de corte.</br>Durante o período na empresa pude aprimorar meus conhecimentos de gestão de propriedade rural e poder morar no Mato Grosso.</br>"
+      },
+      {
+        date: "Jan 2018 - Fev 2020",
+        text: "<strong>Mestrado em Zootecnia - UFLA</strong><br>Período o qual me dediquei aos estudos e desenvolvimento da minha pesquisa</br>"
+      },
+      {
         date: "Abr 2017 - Out 2017",
         text: "<strong>Agrifatto consultoria</strong> - <a href='http://agrifatto.com.br/' target='_blank' class='text-white'>http://agrifatto.com.br/</a><br>Empresa de consultoria de mercado bovino, no qual tive a oportunidade de contribuir na elaboração dos relatórios aos clientes.</br>"
       },
       {
-        date: "Abr 2012 - Dez 2013",
-        text: "<strong>Grupo de Estudos em Genética e Melhoramento Animal</strong> <br>Grupo de estudo do departamento de zootecnia da UFLA no qual fui membro e coordernador de tecnologia. <br> Grupo sob supervisão da Profa. Sarah Laguna Conceição Meirelle"
+        date: "Jan 2016 - Fev 2017",
+        text: "<strong>Centro de Inteligência em Mercados - CIM/UFLA</strong> - <a href='http://www.cim.ufla.br/' target='_blank' class='text-white'>http://www.cim.ufla.br/</a><br>Centro dedicado para estudos de mercado no qual pude desenvolver minhas primeiras análises fundamentalistas e meus primeiros passos na análise gráfica, além de realizar as primeiras operaçÕes em simulador de contratos futuros. <br>Neste ambiente, pude comprendeender as varianças do mercado e as oscilações dos preços das commodities</br>"
       },
       {
+        date: "Mai 2014 - Jan 2016",
+        text: "<strong>Terra Jr consultoria UFLA</strong> - <a href='https://terrajr.com.br/' target='_blank' class='text-white'>https://terrajr.com.br/</a><br>Empresa júnior de consultoria da UFLA, em que tive a oportunidade de contribuir na reestruturação e de diversas consultorias aos produtores locais.</br>"
+      },
+      {
+        date: "Abr 2012 - Jun 2014",
+        text: "<strong>Grupo de Estudos em Genética e Melhoramento Animal</strong> <br>Grupo de estudo do departamento de zootecnia da UFLA no qual fui membro e coordernador de tecnologia. <br> Grupo sob supervisão da Profa. Sarah Laguna Conceição Meirelle"
+      },
+     {
         date: "Abr 2010 - Dez 2010",
-        text: "<strong>Clina Veterinária e Pet Shop Paraná - Goiânia/GO</strong> <br>Local onde tive o meu primeiro contato com a clinica veterinária de pequenos animais"
+        text: "<strong>Clinica Veterinária e Pet Shop Paraná - Goiânia/GO</strong> <br>Local onde tive o meu primeiro contato com a clinica veterinária de pequenos animais"
       }
     ],
     ui: {
