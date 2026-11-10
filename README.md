@@ -78,5 +78,5 @@ My work and studies center on revolutionizing livestock production systems and c
 
 ### 🤝 Connect with Me
 
-- 🌐 Check out my full [Academic Portfolio & Researches](https://le0ribeir0.github.io/curriculo/index.html).
-- 💼 Connect or reach out on [LinkedIn](https://www.linkedin.com/in/leonardo-ribeiro0/).
+- 🌐 Check out my full [Academic Portfolio & Researches](https://le0ribeir0.github.io/curriculo/index.html)
+- 💼 Connect or reach out on [LinkedIn](https://www.linkedin.com/in/leonardo-ribeiro0/)
