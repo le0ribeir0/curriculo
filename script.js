@@ -602,6 +602,7 @@ function setLastUpdatedDate() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.documentElement.classList.remove('dark'); // .remove('dark') bloquiei o inicio do dark para carregar em white, dava erro mudar tudo para white
   document.getElementById('theme-toggle')?.addEventListener('click', () => {
     document.documentElement.classList.toggle('dark');
   });
