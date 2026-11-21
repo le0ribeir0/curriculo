@@ -134,6 +134,10 @@ const portfolioData = {
         text: "<strong>Terra Jr. Consultoria - UFLA</strong><br><em>Consultor / Gestor</em><br>Atuação em empresa júnior de consultoria agronômica e zootécnica, contribuindo na reestruturação interna e prestando consultoria a produtores rurais regionais."
       },
       {
+        date: "Jan 2015 - Mar 2015",
+        text: "<strong>Universidade Federal de Mato Grosso - UFMT</strong><br><em>Setor de Bovinocultura de Corte</em><br>Estágio voluntário no setor de bovinocultura de corte da fazenda experimental, onde pude acompanhar o desenvolvimento de pesquisas e estratégias de suplementação de bovinos de corte, sob supervisão do Prof. Joanis Tilemahos Zervoudakis"
+      },
+      {
         date: "Abr 2012 - Jun 2014",
         text: "<strong>Grupo de Estudos em Genética e Melhoramento Animal (UFLA)</strong><br><em>Coordenador de Tecnologia e Membro</em><br>Grupo de estudos do Departamento de Zootecnia sob supervisão da Profa. Sarah Laguna Conceição Meirelles."
       },
@@ -284,6 +288,10 @@ const portfolioData = {
         text: "<strong>Terra Jr. Consultoría - UFLA</strong><br><em>Consultor / Gestor</em><br>Empresa júnior de consultoría agronómica y zootécnica, contribuyendo en la reestructuración interna y brindando servicios de consultoría a productores locales."
       },
       {
+        date: "Jan 2015 - Mar 2015",
+        text: "<strong>Universidad Federal de Mato Grosso (UFMT) - Brasil</strong><br><em>Pasantía Voluntaria — Sector de Bovinocultura de Carne</em><br>Seguimiento del desarrollo de investigaciones y estrategias de suplementación en ganado de carne en la hacienda experimental, bajo la supervisión del Prof. Joanis Tilemahos Zervoudakis."
+      },
+      {
         date: "Abr 2012 - Jun 2014",
         text: "<strong>Grupo de Estudios en Genética y Mejoramiento Animal (UFLA)</strong><br><em>Coordinador de Tecnología y Miembro</em><br>Grupo de estudios del Departamento de Zootecnia bajo la supervisión de la Profa. Sarah Laguna Conceição Meirelles."
       },
@@ -432,6 +440,10 @@ const portfolioData = {
       {
         date: "May 2014 - Jan 2016",
         text: "<strong>Terra Jr. Consulting - UFLA</strong><br><em>Consultant / Manager</em><br>Engaged in student-run agricultural consulting firm, assisting in internal restructuring and providing advisory services to local farmers."
+      },
+      {
+        date: "Jan 2015 - Mar 2015",
+        text: "<strong>Federal University of Mato Grosso (UFMT) - Brazil</strong><br><em>Volunteer Intern — Beef Cattle Sector</em><br>Followed research development and beef cattle supplementation strategies at the experimental farm, supervised by Prof. Joanis Tilemahos Zervoudakis."
       },
       {
         date: "Apr 2012 - Jun 2014",
