@@ -6,8 +6,15 @@
   <title>Leonardo A. Coelho Ribeiro | Portfólio Acadêmico e Pesquisas</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
+    <script>
+      if (localStorage.getItem('theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+    <script>
+      tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {

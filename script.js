@@ -613,10 +613,20 @@ function setLastUpdatedDate() {
   }
 }
 
+// NOVO:
 document.addEventListener('DOMContentLoaded', () => {
-  document.documentElement.classList.remove('dark'); // .remove('dark') bloquiei o inicio do dark para carregar em white, dava erro mudar tudo para white
-  document.getElementById('theme-toggle')?.addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const savedTheme = localStorage.getItem('theme');
+
+  if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+
+  themeToggleBtn?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   });
 
   document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
