@@ -431,7 +431,7 @@ const portfolioData = {
       },
       {
         date: "Apr 2017 - Oct 2017",
-        text: "<strong>Agrifatto Consultoria</strong><br><em>Intern Market Consultant / Analyst</em><br>Contributed directly to livestock market research and the elaboration of strategic intelligence reports for clients."
+        text: "<strong>Agrifatto Consultoria</strong><br><em>Intern Market Consultant / Analyst</em><br>Contributed directly to livestock market research and development of strategic intelligence reports for clients."
       },
       {
         date: "Jan 2016 - Feb 2017",
@@ -439,11 +439,11 @@ const portfolioData = {
       },
       {
         date: "May 2014 - Jan 2016",
-        text: "<strong>Terra Jr. Consulting - UFLA</strong><br><em>Consultant / Manager</em><br>Engaged in student-run agricultural consulting firm, assisting in internal restructuring and providing advisory services to local farmers."
+        text: "<strong>Terra Jr. Consulting - UFLA</strong><br><em>Consultant / Manager</em><br>Engaged in a student-run agricultural consulting firm, assisting in internal restructuring and providing advisory services to local farmers."
       },
       {
         date: "Jan 2015 - Mar 2015",
-        text: "<strong>Federal University of Mato Grosso (UFMT) - Brazil</strong><br><em>Volunteer Intern — Beef Cattle Sector</em><br>Followed research development and beef cattle supplementation strategies at the experimental farm, supervised by Prof. Joanis Tilemahos Zervoudakis."
+        text: "<strong>Federal University of Mato Grosso (UFMT) - Brazil</strong><br><em>Volunteer Intern - Beef Cattle Sector</em><br>Followed research development and beef cattle supplementation strategies at the experimental farm, supervised by Prof. Joanis Tilemahos Zervoudakis."
       },
       {
         date: "Apr 2012 - Jun 2014",
